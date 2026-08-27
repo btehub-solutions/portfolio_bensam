@@ -1845,46 +1845,15 @@ function ProjectsArchivePage({
       {/* Top Archive Hero Frame with film grain and pure black bg */}
       <div className="w-full px-2 sm:px-2.5 pt-2 pb-2.5">
         <section
-          className="film-grain relative w-full min-h-[500px] md:min-h-[600px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10 flex flex-col justify-between p-5 sm:p-7 md:p-10 select-none"
+          className="film-grain relative w-full min-h-[460px] sm:min-h-[520px] md:min-h-[600px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10 flex flex-col justify-between p-5 sm:p-7 md:p-10 select-none"
         >
-          {/* Top Header Row with Left B·S Badge and Centered 3-Button Navbar */}
-          <div className="relative z-30 flex items-center justify-between w-full">
-            <button
-              onClick={onNavigateHome}
-              className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-white text-black font-extrabold flex items-center justify-center text-xs md:text-sm tracking-wider shadow-lg hover:scale-105 transition-transform cursor-pointer shrink-0"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              B·S
-            </button>
-
-            {/* Centered Large 3-Button Navbar */}
-            <div className="flex items-center gap-1 sm:gap-1.5 md:gap-3 mx-auto">
-              <button
-                onClick={onNavigateHome}
-                className="bg-[#FF4800] text-black font-bold text-[10px] sm:text-xs md:text-base px-2.5 sm:px-4 md:px-8 py-1.5 sm:py-2 md:py-2.5 rounded-none shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                Home
-              </button>
-
-              <button
-                className="bg-[#22C55E] text-black font-bold text-[10px] sm:text-xs md:text-base px-2.5 sm:px-4 md:px-8 py-1.5 sm:py-2 md:py-2.5 rounded-full shadow-md brightness-110 ring-2 ring-white/40 transition-all cursor-default text-center"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                Project
-              </button>
-
-              <button
-                onClick={onOpenCV}
-                className="bg-[#8BB4F7] text-black font-bold text-[10px] sm:text-xs md:text-base px-2.5 sm:px-4 md:px-8 py-1.5 sm:py-2 md:py-2.5 rounded-lg shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                CV
-              </button>
-            </div>
-
-            <div className="w-11 md:w-12 shrink-0" />
-          </div>
+          {/* Top Shared Navbar with Project Active Highlight */}
+          <Navbar
+            activeView="projects"
+            onNavigateHome={onNavigateHome}
+            onNavigateProjects={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onOpenCV={onOpenCV}
+          />
 
           {/* Centered Massive Display Title: "Projects" */}
           <div className="relative z-10 text-center my-auto py-12 md:py-16 select-none" style={{ lineHeight: 0.82 }}>
@@ -1941,19 +1910,23 @@ function ProjectsArchivePage({
 }
 
 function Navbar({
+  activeView = "home",
+  onNavigateHome,
+  onNavigateProjects,
   onOpenCV,
-  onNavigateToProjects,
 }: {
-  onOpenCV: () => void;
-  onNavigateToProjects?: () => void;
+  activeView?: "home" | "projects" | "cv";
+  onNavigateHome?: () => void;
+  onNavigateProjects?: () => void;
+  onOpenCV?: () => void;
 }) {
   return (
     <div className="absolute top-3.5 sm:top-4 left-0 right-0 z-30 px-3 sm:px-4 md:px-5 flex items-center justify-between pointer-events-none">
 
       {/* Brand Badge — hidden on mobile, visible sm+ */}
-      <a
-        href="#home"
-        className="hidden sm:flex w-11 h-11 md:w-12 md:h-12 rounded-full bg-white items-center justify-center shrink-0 shadow-lg hover:scale-105 transition-transform pointer-events-auto cursor-pointer"
+      <button
+        onClick={onNavigateHome}
+        className="hidden sm:flex w-11 h-11 md:w-12 md:h-12 rounded-full bg-white items-center justify-center shrink-0 shadow-lg hover:scale-105 active:scale-95 transition-transform pointer-events-auto cursor-pointer"
         title="Ben Sam Portfolio"
       >
         <span
@@ -1962,28 +1935,34 @@ function Navbar({
         >
           B·S
         </span>
-      </a>
+      </button>
 
       {/* On mobile: buttons fill full width centered. On sm+: buttons are absolutely centred over the navbar */}
       {/* Mobile row — flex centered, no badge competing */}
       <div className="flex sm:hidden items-center justify-center w-full gap-2 pointer-events-auto">
-        <a
-          href="#home"
-          className="bg-[#FF4800] text-black font-bold text-sm px-5 py-2 rounded-none shadow-md hover:brightness-110 active:scale-95 transition-all text-center"
+        <button
+          onClick={onNavigateHome}
+          className={`bg-[#FF4800] text-black font-bold text-sm px-5 py-2 rounded-none shadow-md transition-all text-center cursor-pointer ${
+            activeView === "home" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
+          }`}
           style={{ fontFamily: "var(--font-body)" }}
         >
           Home
-        </a>
+        </button>
         <button
-          onClick={onNavigateToProjects}
-          className="bg-[#22C55E] text-black font-bold text-sm px-5 py-2 rounded-full shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
+          onClick={onNavigateProjects}
+          className={`bg-[#22C55E] text-black font-bold text-sm px-5 py-2 rounded-full shadow-md transition-all cursor-pointer text-center ${
+            activeView === "projects" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
+          }`}
           style={{ fontFamily: "var(--font-body)" }}
         >
           Project
         </button>
         <button
           onClick={onOpenCV}
-          className="bg-[#8BB4F7] text-black font-bold text-sm px-5 py-2 rounded-lg shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
+          className={`bg-[#8BB4F7] text-black font-bold text-sm px-5 py-2 rounded-lg shadow-md transition-all cursor-pointer text-center ${
+            activeView === "cv" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
+          }`}
           style={{ fontFamily: "var(--font-body)" }}
         >
           CV
@@ -1992,28 +1971,37 @@ function Navbar({
 
       {/* Desktop/tablet row — absolute centred over the badge-equipped navbar */}
       <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 md:gap-3 pointer-events-auto">
-        <a
-          href="#home"
-          className="bg-[#FF4800] text-black font-bold text-sm md:text-base lg:text-lg px-5 md:px-7 lg:px-9 py-2.5 md:py-3 rounded-none shadow-md hover:brightness-110 active:scale-95 transition-all text-center"
+        <button
+          onClick={onNavigateHome}
+          className={`bg-[#FF4800] text-black font-bold text-sm md:text-base lg:text-lg px-5 md:px-7 lg:px-9 py-2.5 md:py-3 rounded-none shadow-md transition-all text-center cursor-pointer ${
+            activeView === "home" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
+          }`}
           style={{ fontFamily: "var(--font-body)" }}
         >
           Home
-        </a>
+        </button>
         <button
-          onClick={onNavigateToProjects}
-          className="bg-[#22C55E] text-black font-bold text-sm md:text-base lg:text-lg px-5 md:px-7 lg:px-9 py-2.5 md:py-3 rounded-full shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
+          onClick={onNavigateProjects}
+          className={`bg-[#22C55E] text-black font-bold text-sm md:text-base lg:text-lg px-5 md:px-7 lg:px-9 py-2.5 md:py-3 rounded-full shadow-md transition-all cursor-pointer text-center ${
+            activeView === "projects" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
+          }`}
           style={{ fontFamily: "var(--font-body)" }}
         >
           Project
         </button>
         <button
           onClick={onOpenCV}
-          className="bg-[#8BB4F7] text-black font-bold text-sm md:text-base lg:text-lg px-5 md:px-7 lg:px-9 py-2.5 md:py-3 rounded-lg shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
+          className={`bg-[#8BB4F7] text-black font-bold text-sm md:text-base lg:text-lg px-5 md:px-7 lg:px-9 py-2.5 md:py-3 rounded-lg shadow-md transition-all cursor-pointer text-center ${
+            activeView === "cv" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
+          }`}
           style={{ fontFamily: "var(--font-body)" }}
         >
           CV
         </button>
       </div>
+
+      {/* Right Spacer for balance on desktop */}
+      <div className="hidden sm:block w-11 md:w-12 shrink-0 pointer-events-none" />
     </div>
   );
 }
@@ -2067,7 +2055,12 @@ function Hero({
         <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/10 to-black/60 pointer-events-none" />
 
         {/* Navigation Bar inside the Framed Hero */}
-        <Navbar onOpenCV={onOpenCV} onNavigateToProjects={onNavigateToProjects} />
+        <Navbar
+          activeView="home"
+          onNavigateHome={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onNavigateProjects={onNavigateToProjects}
+          onOpenCV={onOpenCV}
+        />
 
       </section>
     </div>
@@ -2092,45 +2085,18 @@ function CVPage({
     <div className="min-h-screen bg-black text-white film-grain">
       {/* Top Header Navbar Frame */}
       <div className="no-print w-full px-2 sm:px-2.5 pt-2 pb-2.5">
-        <div className="film-grain relative w-full rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10 px-4 sm:px-8 py-5 flex items-center justify-between">
-          <button
-            onClick={onNavigateHome}
-            className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-white text-black font-extrabold flex items-center justify-center text-xs md:text-sm tracking-wider shadow-lg hover:scale-105 transition-transform cursor-pointer shrink-0"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            B·S
-          </button>
+        <div className="film-grain relative w-full min-h-[72px] sm:min-h-[80px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10 px-4 sm:px-8 py-4 flex items-center justify-between">
+          <Navbar
+            activeView="cv"
+            onNavigateHome={onNavigateHome}
+            onNavigateProjects={onNavigateProjects}
+            onOpenCV={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          />
 
-          {/* Centered Large 3-Button Navbar */}
-          <div className="flex items-center gap-1 sm:gap-1.5 md:gap-3">
-            <button
-              onClick={onNavigateHome}
-              className="bg-[#FF4800] text-black font-bold text-[10px] sm:text-xs md:text-base px-2.5 sm:px-4 md:px-8 py-1.5 sm:py-2 md:py-2.5 rounded-none shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              Home
-            </button>
-
-            <button
-              onClick={onNavigateProjects}
-              className="bg-[#22C55E] text-black font-bold text-[10px] sm:text-xs md:text-base px-2.5 sm:px-4 md:px-8 py-1.5 sm:py-2 md:py-2.5 rounded-full shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              Project
-            </button>
-
-            <button
-              className="bg-[#8BB4F7] text-black font-bold text-[10px] sm:text-xs md:text-base px-2.5 sm:px-4 md:px-8 py-1.5 sm:py-2 md:py-2.5 rounded-lg shadow-md brightness-110 ring-2 ring-white/40 transition-all cursor-default text-center"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              CV
-            </button>
-          </div>
-
-          <div className="flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2 relative z-40 ml-auto pointer-events-auto">
             <button
               onClick={handlePrint}
-              className="hidden sm:inline-flex items-center gap-2 bg-white text-black font-bold text-xs md:text-sm px-4 md:px-5 py-2.5 rounded-full shadow-md hover:bg-white/90 active:scale-95 transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 bg-white text-black font-bold text-xs md:text-sm px-4 md:px-5 py-2.5 rounded-full shadow-md hover:bg-white/90 active:scale-95 transition-all cursor-pointer"
             >
               <DownloadSimple size={18} weight="bold" />
               <span>Download PDF</span>
