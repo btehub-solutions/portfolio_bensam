@@ -2,6 +2,26 @@
 
 import { useState, useEffect } from "react";
 import AudioNarrationPlayer from "./AudioNarrationPlayer";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  CaretLeft,
+  CaretRight,
+  Check,
+  Copy,
+  DownloadSimple,
+  EnvelopeSimple,
+  FilePdf,
+  GithubLogo,
+  Globe,
+  Lightning,
+  LinkedinLogo,
+  MapPin,
+  Phone,
+  WhatsappLogo,
+  X,
+} from "@phosphor-icons/react";
 
 const NAV_LINKS = [
   { label: "Home",       href: "#home",       color: "bg-orange-500 text-white",   shape: "rounded-xl" },
@@ -1329,13 +1349,13 @@ function FeaturedSpotlight() {
                 aria-label="Previous startup"
                 className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white text-xs flex items-center justify-center transition-all cursor-pointer border border-white/10"
               >
-                ←
+                <CaretLeft size={14} weight="bold" />
               </button>
 
               <div className="flex items-center gap-1.5">
-                {FEATURED_SLIDES.map((s, idx) => (
+                {FEATURED_SLIDES.map((_, idx) => (
                   <button
-                    key={s.id}
+                    key={idx}
                     onClick={() => setCurrentSlide(idx)}
                     aria-label={`Go to slide ${idx + 1}`}
                     className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 cursor-pointer ${
@@ -1350,7 +1370,7 @@ function FeaturedSpotlight() {
                 aria-label="Next startup"
                 className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white text-xs flex items-center justify-center transition-all cursor-pointer border border-white/10"
               >
-                →
+                <CaretRight size={14} weight="bold" />
               </button>
             </div>
           </div>
@@ -1413,7 +1433,7 @@ function ProjectCard({ project, isFirst }: { project: typeof PROJECTS[0]; isFirs
 
         {/* Elegant Arrow Indicator */}
         <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-white text-white group-hover:text-black flex items-center justify-center font-bold text-xs transition-all duration-300 backdrop-blur-md shrink-0 mb-0.5">
-          ↗
+          <ArrowUpRight size={15} weight="bold" />
         </div>
       </div>
     </a>
@@ -1519,9 +1539,10 @@ function QuickConnectModal({
 
           <button
             onClick={onClose}
+            aria-label="Close modal"
             className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
           >
-            ✕
+            <X size={16} weight="bold" />
           </button>
         </div>
 
@@ -1531,7 +1552,7 @@ function QuickConnectModal({
           <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-white/25 transition-all">
             <div className="flex items-center gap-3.5">
               <div className="w-10 h-10 rounded-lg bg-[#FF4800]/20 text-[#FF4800] flex items-center justify-center text-lg shrink-0 font-bold">
-                ✉
+                <EnvelopeSimple size={20} weight="fill" />
               </div>
               <div>
                 <p
@@ -1549,10 +1570,20 @@ function QuickConnectModal({
             <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={handleCopyEmail}
-                className="px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-xs font-semibold transition-all cursor-pointer"
+                className="px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-xs font-semibold transition-all cursor-pointer inline-flex items-center gap-1.5"
                 style={{ fontFamily: "var(--font-body)" }}
               >
-                {copiedEmail ? "✓ Copied" : "Copy"}
+                {copiedEmail ? (
+                  <>
+                    <Check size={13} weight="bold" className="text-emerald-400" />
+                    <span>Copied</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy size={13} weight="bold" />
+                    <span>Copy</span>
+                  </>
+                )}
               </button>
               <a
                 href="mailto:bensamoladoyin1@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20Ben%20Sam%20Oladoyin&body=Hi%20Ben%20Sam%2C%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project..."
@@ -1560,7 +1591,7 @@ function QuickConnectModal({
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 <span>Compose</span>
-                <span>↗</span>
+                <ArrowUpRight size={13} weight="bold" />
               </a>
             </div>
           </div>
@@ -1569,7 +1600,7 @@ function QuickConnectModal({
           <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-white/25 transition-all">
             <div className="flex items-center gap-3.5">
               <div className="w-10 h-10 rounded-lg bg-[#22C55E]/20 text-[#22C55E] flex items-center justify-center text-lg shrink-0 font-bold">
-                💬
+                <WhatsappLogo size={22} weight="fill" />
               </div>
               <div>
                 <p
@@ -1587,10 +1618,20 @@ function QuickConnectModal({
             <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={handleCopyPhone}
-                className="px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-xs font-semibold transition-all cursor-pointer"
+                className="px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-xs font-semibold transition-all cursor-pointer inline-flex items-center gap-1.5"
                 style={{ fontFamily: "var(--font-body)" }}
               >
-                {copiedPhone ? "✓ Copied" : "Copy"}
+                {copiedPhone ? (
+                  <>
+                    <Check size={13} weight="bold" className="text-emerald-400" />
+                    <span>Copied</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy size={13} weight="bold" />
+                    <span>Copy</span>
+                  </>
+                )}
               </button>
               <a
                 href="https://wa.me/2347045422815?text=Hi%20Ben%20Sam%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project."
@@ -1600,7 +1641,7 @@ function QuickConnectModal({
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 <span>Chat</span>
-                <span>↗</span>
+                <ArrowUpRight size={13} weight="bold" />
               </a>
             </div>
           </div>
@@ -1614,7 +1655,7 @@ function QuickConnectModal({
           >
             <div className="flex items-center gap-3.5">
               <div className="w-10 h-10 rounded-lg bg-[#8BB4F7]/20 text-[#8BB4F7] flex items-center justify-center font-bold text-sm shrink-0">
-                in
+                <LinkedinLogo size={20} weight="fill" />
               </div>
               <div>
                 <p
@@ -1628,7 +1669,7 @@ function QuickConnectModal({
                 </p>
               </div>
             </div>
-            <span className="text-white/40 group-hover:text-white transition-colors text-sm">↗</span>
+            <ArrowUpRight size={16} weight="bold" className="text-white/40 group-hover:text-white transition-colors" />
           </a>
         </div>
 
@@ -1637,7 +1678,10 @@ function QuickConnectModal({
           className="pt-5 mt-5 border-t border-white/10 flex items-center justify-between text-xs text-white/50"
           style={{ fontFamily: "var(--font-body)" }}
         >
-          <span>⚡ Fast responses within 2–4 hours</span>
+          <span className="flex items-center gap-1.5">
+            <Lightning size={14} weight="fill" className="text-amber-400" />
+            <span>Fast responses within 2–4 hours</span>
+          </span>
           <span>Abeokuta, Nigeria (GMT+1)</span>
         </div>
       </div>
@@ -2088,9 +2132,7 @@ function CVPage({
               onClick={handlePrint}
               className="hidden sm:inline-flex items-center gap-2 bg-white text-black font-bold text-xs md:text-sm px-4 md:px-5 py-2.5 rounded-full shadow-md hover:bg-white/90 active:scale-95 transition-all cursor-pointer"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
+              <DownloadSimple size={18} weight="bold" />
               <span>Download PDF</span>
             </button>
           </div>
@@ -2107,7 +2149,7 @@ function CVPage({
               onClick={onNavigateHome}
               className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm font-semibold transition-colors cursor-pointer"
             >
-              <span>←</span>
+              <ArrowLeft size={16} weight="bold" />
               <span>Back to Portfolio</span>
             </button>
 
@@ -2115,9 +2157,7 @@ function CVPage({
               onClick={handlePrint}
               className="sm:hidden inline-flex items-center gap-1.5 bg-white text-black font-bold text-xs px-3.5 py-2 rounded-full cursor-pointer"
             >
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
+              <DownloadSimple size={14} weight="bold" />
               <span>PDF</span>
             </button>
           </div>
@@ -2148,23 +2188,23 @@ function CVPage({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-white/70 font-mono">
                 <div className="flex items-center justify-center md:justify-start gap-2">
-                  <span className="text-white/40">✉</span>
+                  <EnvelopeSimple size={16} weight="bold" className="text-white/40" />
                   <a href="mailto:bensamoladoyin1@gmail.com" className="hover:text-white transition-colors break-all">
                     bensamoladoyin1@gmail.com
                   </a>
                 </div>
                 <div className="flex items-center justify-center md:justify-start gap-2">
-                  <span className="text-white/40">📞</span>
+                  <Phone size={16} weight="bold" className="text-white/40" />
                   <a href="tel:+2347045422815" className="hover:text-white transition-colors">
                     +234 704 542 2815
                   </a>
                 </div>
                 <div className="flex items-center justify-center md:justify-start gap-2">
-                  <span className="text-white/40">📍</span>
+                  <MapPin size={16} weight="bold" className="text-white/40" />
                   <span>Abeokuta, Nigeria</span>
                 </div>
                 <div className="flex items-center justify-center md:justify-start gap-2">
-                  <span className="text-white/40">🌐</span>
+                  <Globe size={16} weight="bold" className="text-white/40" />
                   <a href="https://bensamoladoyin.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                     bensamoladoyin.vercel.app
                   </a>
@@ -2335,8 +2375,11 @@ function CVPage({
                     className="flex flex-col gap-1 p-3 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] text-white/80 hover:text-white transition-all border border-white/10 group"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-white text-sm" style={{ fontFamily: "var(--font-display)" }}>LinkedIn</span>
-                      <span className="text-white/40 group-hover:text-white transition-colors">↗</span>
+                      <div className="flex items-center gap-2">
+                        <LinkedinLogo size={18} weight="fill" className="text-[#8BB4F7]" />
+                        <span className="font-semibold text-white text-sm" style={{ fontFamily: "var(--font-display)" }}>LinkedIn</span>
+                      </div>
+                      <ArrowUpRight size={14} weight="bold" className="text-white/40 group-hover:text-white transition-colors" />
                     </div>
                     <span className="text-[11px] font-mono text-white/60 group-hover:text-white/90 break-all">
                       linkedin.com/in/ben-sam-oladoyin-527966233
@@ -2350,8 +2393,11 @@ function CVPage({
                     className="flex flex-col gap-1 p-3 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] text-white/80 hover:text-white transition-all border border-white/10 group"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-white text-sm" style={{ fontFamily: "var(--font-display)" }}>GitHub</span>
-                      <span className="text-white/40 group-hover:text-white transition-colors">↗</span>
+                      <div className="flex items-center gap-2">
+                        <GithubLogo size={18} weight="fill" className="text-white/80" />
+                        <span className="font-semibold text-white text-sm" style={{ fontFamily: "var(--font-display)" }}>GitHub</span>
+                      </div>
+                      <ArrowUpRight size={14} weight="bold" className="text-white/40 group-hover:text-white transition-colors" />
                     </div>
                     <span className="text-[11px] font-mono text-white/60 group-hover:text-white/90 break-all">
                       github.com/btehub-solutions
