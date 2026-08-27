@@ -1948,7 +1948,7 @@ function Navbar({
   onNavigateToProjects?: () => void;
 }) {
   return (
-    <div className="fixed top-3.5 sm:top-4 left-0 right-0 z-50 px-3 sm:px-4 md:px-5 flex items-center justify-between pointer-events-none">
+    <div className="absolute top-3.5 sm:top-4 left-0 right-0 z-30 px-3 sm:px-4 md:px-5 flex items-center justify-between pointer-events-none">
 
       {/* Brand Badge — hidden on mobile, visible sm+ */}
       <a
@@ -2065,6 +2065,9 @@ function Hero({
         {/* Cinematic Vignette & Gradient Overlays for Readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/60 pointer-events-none" />
         <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/10 to-black/60 pointer-events-none" />
+
+        {/* Navigation Bar inside the Framed Hero */}
+        <Navbar onOpenCV={onOpenCV} onNavigateToProjects={onNavigateToProjects} />
 
       </section>
     </div>
@@ -2603,12 +2606,6 @@ export default function App() {
 
       {view === "home" && (
         <div className="film-grain min-h-screen bg-black text-white relative">
-          {/* Floating Persistent Navbar that follows the user on scroll */}
-          <Navbar
-            onOpenCV={navigateToCV}
-            onNavigateToProjects={navigateToProjects}
-          />
-
           {/* Top Ticker Marquee - Transparent Without Background */}
           <div className="w-full overflow-hidden py-2.5 bg-transparent relative z-40">
             <div className="flex gap-8 animate-marquee whitespace-nowrap">
