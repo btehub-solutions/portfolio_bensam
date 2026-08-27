@@ -1955,27 +1955,21 @@ function Navbar({
       <div className="flex sm:hidden items-center justify-center w-full gap-2 pointer-events-auto">
         <button
           onClick={onNavigateHome}
-          className={`h-11 px-5 bg-[#FF4800] text-black font-bold text-sm rounded-none shadow-md flex items-center justify-center transition-all cursor-pointer ${
-            activeView === "home" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
-          }`}
+          className="h-11 px-5 bg-[#FF4800] text-black font-bold text-sm rounded-none shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
           style={{ fontFamily: "var(--font-body)" }}
         >
           Home
         </button>
         <button
           onClick={onNavigateProjects}
-          className={`h-11 px-5 bg-[#22C55E] text-black font-bold text-sm rounded-full shadow-md flex items-center justify-center transition-all cursor-pointer ${
-            activeView === "projects" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
-          }`}
+          className="h-11 px-5 bg-[#22C55E] text-black font-bold text-sm rounded-full shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
           style={{ fontFamily: "var(--font-body)" }}
         >
           Project
         </button>
         <button
           onClick={onOpenCV}
-          className={`h-11 px-5 bg-[#8BB4F7] text-black font-bold text-sm rounded-lg shadow-md flex items-center justify-center transition-all cursor-pointer ${
-            activeView === "cv" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
-          }`}
+          className="h-11 px-5 bg-[#8BB4F7] text-black font-bold text-sm rounded-lg shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
           style={{ fontFamily: "var(--font-body)" }}
         >
           CV
@@ -1986,27 +1980,21 @@ function Navbar({
       <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 md:gap-2.5 pointer-events-auto">
         <button
           onClick={onNavigateHome}
-          className={`h-11 md:h-12 px-6 md:px-8 bg-[#FF4800] text-black font-bold text-sm md:text-base rounded-none shadow-md flex items-center justify-center transition-all cursor-pointer ${
-            activeView === "home" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
-          }`}
+          className="h-11 md:h-12 px-6 md:px-8 bg-[#FF4800] text-black font-bold text-sm md:text-base rounded-none shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
           style={{ fontFamily: "var(--font-body)" }}
         >
           Home
         </button>
         <button
           onClick={onNavigateProjects}
-          className={`h-11 md:h-12 px-6 md:px-8 bg-[#22C55E] text-black font-bold text-sm md:text-base rounded-full shadow-md flex items-center justify-center transition-all cursor-pointer ${
-            activeView === "projects" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
-          }`}
+          className="h-11 md:h-12 px-6 md:px-8 bg-[#22C55E] text-black font-bold text-sm md:text-base rounded-full shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
           style={{ fontFamily: "var(--font-body)" }}
         >
           Project
         </button>
         <button
           onClick={onOpenCV}
-          className={`h-11 md:h-12 px-6 md:px-8 bg-[#8BB4F7] text-black font-bold text-sm md:text-base rounded-lg shadow-md flex items-center justify-center transition-all cursor-pointer ${
-            activeView === "cv" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
-          }`}
+          className="h-11 md:h-12 px-6 md:px-8 bg-[#8BB4F7] text-black font-bold text-sm md:text-base rounded-lg shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
           style={{ fontFamily: "var(--font-body)" }}
         >
           CV
