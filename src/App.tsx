@@ -1920,13 +1920,27 @@ function Navbar({
   onNavigateProjects?: () => void;
   onOpenCV?: () => void;
 }) {
-  return (
-    <div className="absolute top-3.5 sm:top-4 left-0 right-0 z-30 px-3 sm:px-4 md:px-5 flex items-center justify-between pointer-events-none">
+  const [scrolled, setScrolled] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <nav
+      aria-label="Main Navigation"
+      className={`fixed left-0 right-0 z-50 px-3 sm:px-4 md:px-6 flex items-center justify-between pointer-events-none transition-all duration-300 ${
+        scrolled ? "top-3 sm:top-4" : "top-[42px] sm:top-[46px]"
+      }`}
+    >
       {/* Brand Badge — hidden on mobile, visible sm+ */}
       <button
         onClick={onNavigateHome}
-        className="hidden sm:flex w-11 h-11 md:w-12 md:h-12 rounded-full bg-white items-center justify-center shrink-0 shadow-lg hover:scale-105 active:scale-95 transition-transform pointer-events-auto cursor-pointer"
+        className="hidden sm:flex w-11 h-11 md:w-12 md:h-12 rounded-full bg-white items-center justify-center shrink-0 shadow-2xl hover:scale-105 active:scale-95 transition-transform pointer-events-auto cursor-pointer"
         title="Ben Sam Portfolio"
       >
         <span
@@ -1937,7 +1951,6 @@ function Navbar({
         </span>
       </button>
 
-      {/* On mobile: buttons fill full width centered. On sm+: buttons are absolutely centred over the navbar */}
       {/* Mobile row — 44px WCAG touch compliant height */}
       <div className="flex sm:hidden items-center justify-center w-full gap-2 pointer-events-auto">
         <button
@@ -2002,7 +2015,7 @@ function Navbar({
 
       {/* Right Spacer for balance on desktop */}
       <div className="hidden sm:block w-11 md:w-12 shrink-0 pointer-events-none" />
-    </div>
+    </nav>
   );
 }
 
@@ -2053,14 +2066,6 @@ function Hero({
         {/* Cinematic Vignette & Gradient Overlays for Readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/60 pointer-events-none" />
         <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/10 to-black/60 pointer-events-none" />
-
-        {/* Navigation Bar inside the Framed Hero */}
-        <Navbar
-          activeView="home"
-          onNavigateHome={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          onNavigateProjects={onNavigateToProjects}
-          onOpenCV={onOpenCV}
-        />
 
       </section>
     </div>
@@ -2572,6 +2577,14 @@ export default function App() {
 
       {view === "home" && (
         <div className="film-grain min-h-screen bg-black text-white relative">
+          {/* Global Floating Navbar that follows scroll */}
+          <Navbar
+            activeView="home"
+            onNavigateHome={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onNavigateProjects={navigateToProjects}
+            onOpenCV={navigateToCV}
+          />
+
           {/* Top Ticker Marquee - Transparent Without Background */}
           <div className="w-full overflow-hidden py-2.5 bg-transparent relative z-40">
             <div className="flex gap-8 animate-marquee whitespace-nowrap">
