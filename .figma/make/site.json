@@ -1,0 +1,10 @@
+{
+  "description": "This web application streamlines the process of managing and tracking personal finances, offering users intuitive tools for budgeting and expense monitoring.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

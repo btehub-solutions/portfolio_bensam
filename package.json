@@ -1,0 +1,30 @@
+{
+  "name": "portfolio-bensam",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 8443",
+    "build": "next build",
+    "start": "next start -p 8443"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "@tailwindcss/postcss": "^4.0.9",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lenis": "^1.1.20",
+    "motion": "^12.4.7",
+    "next": "^15.1.7",
+    "postcss": "^8.5.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss": "^4.0.9"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}
