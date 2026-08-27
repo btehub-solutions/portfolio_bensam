@@ -1947,74 +1947,71 @@ function Navbar({
   onOpenCV: () => void;
   onNavigateToProjects?: () => void;
 }) {
-  return (
-    <div className="absolute top-3.5 sm:top-4 left-0 right-0 z-30 px-3 sm:px-4 md:px-5 flex items-center justify-between pointer-events-none">
+  const [scrolled, setScrolled] = useState(false);
 
-      {/* Brand Badge — hidden on mobile, visible sm+ */}
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <nav
+      aria-label="Main Navigation"
+      className="fixed top-3.5 sm:top-5 left-0 right-0 z-50 px-3 sm:px-4 md:px-6 flex items-center justify-between pointer-events-none transition-all duration-300"
+    >
+      {/* Brand Badge — clickable to scroll to top */}
       <a
         href="#home"
-        className="hidden sm:flex w-11 h-11 md:w-12 md:h-12 rounded-full bg-white items-center justify-center shrink-0 shadow-lg hover:scale-105 transition-transform pointer-events-auto cursor-pointer"
+        className={`w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center shrink-0 shadow-2xl hover:scale-105 active:scale-95 transition-all pointer-events-auto cursor-pointer ${
+          scrolled ? "ring-2 ring-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.9)]" : ""
+        }`}
         title="Ben Sam Portfolio"
       >
         <span
-          className="text-black text-sm md:text-base font-black tracking-tight"
+          className="text-black text-xs sm:text-sm md:text-base font-black tracking-tight"
           style={{ fontFamily: "var(--font-display)" }}
         >
           B·S
         </span>
       </a>
 
-      {/* On mobile: buttons fill full width centered. On sm+: buttons are absolutely centred over the navbar */}
-      {/* Mobile row — flex centered, no badge competing */}
-      <div className="flex sm:hidden items-center justify-center w-full gap-2 pointer-events-auto">
+      {/* Centered Navigation Buttons (follows scroll with glassmorphism backdrop) */}
+      <div
+        className={`pointer-events-auto flex items-center gap-1 sm:gap-2 md:gap-3 transition-all duration-300 ${
+          scrolled
+            ? "bg-[#09090b]/85 backdrop-blur-xl p-1 sm:p-1.5 rounded-full border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
+            : ""
+        }`}
+      >
         <a
           href="#home"
-          className="bg-[#FF4800] text-black font-bold text-sm px-5 py-2 rounded-none shadow-md hover:brightness-110 active:scale-95 transition-all text-center"
+          className="bg-[#FF4800] text-black font-bold text-xs sm:text-sm md:text-base px-3 sm:px-5 md:px-7 py-1.5 sm:py-2 md:py-2.5 rounded-none sm:rounded-full shadow-md hover:brightness-110 active:scale-95 transition-all text-center"
           style={{ fontFamily: "var(--font-body)" }}
         >
           Home
         </a>
         <button
           onClick={onNavigateToProjects}
-          className="bg-[#22C55E] text-black font-bold text-sm px-5 py-2 rounded-full shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
+          className="bg-[#22C55E] text-black font-bold text-xs sm:text-sm md:text-base px-3 sm:px-5 md:px-7 py-1.5 sm:py-2 md:py-2.5 rounded-full shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
           style={{ fontFamily: "var(--font-body)" }}
         >
           Project
         </button>
         <button
           onClick={onOpenCV}
-          className="bg-[#8BB4F7] text-black font-bold text-sm px-5 py-2 rounded-lg shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
+          className="bg-[#8BB4F7] text-black font-bold text-xs sm:text-sm md:text-base px-3 sm:px-5 md:px-7 py-1.5 sm:py-2 md:py-2.5 rounded-lg sm:rounded-full shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
           style={{ fontFamily: "var(--font-body)" }}
         >
           CV
         </button>
       </div>
 
-      {/* Desktop/tablet row — absolute centred over the badge-equipped navbar */}
-      <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 md:gap-3 pointer-events-auto">
-        <a
-          href="#home"
-          className="bg-[#FF4800] text-black font-bold text-sm md:text-base lg:text-lg px-5 md:px-7 lg:px-9 py-2.5 md:py-3 rounded-none shadow-md hover:brightness-110 active:scale-95 transition-all text-center"
-          style={{ fontFamily: "var(--font-body)" }}
-        >
-          Home
-        </a>
-        <button
-          onClick={onNavigateToProjects}
-          className="bg-[#22C55E] text-black font-bold text-sm md:text-base lg:text-lg px-5 md:px-7 lg:px-9 py-2.5 md:py-3 rounded-full shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
-          style={{ fontFamily: "var(--font-body)" }}
-        >
-          Project
-        </button>
-        <button
-          onClick={onOpenCV}
-          className="bg-[#8BB4F7] text-black font-bold text-sm md:text-base lg:text-lg px-5 md:px-7 lg:px-9 py-2.5 md:py-3 rounded-lg shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
-          style={{ fontFamily: "var(--font-body)" }}
-        >
-          CV
-        </button>
-      </div>
-    </div>
+      {/* Right Spacer for balance on desktop */}
+      <div className="w-10 sm:w-11 md:w-12 shrink-0 pointer-events-none" />
+    </nav>
   );
 }
 
@@ -2065,9 +2062,6 @@ function Hero({
         {/* Cinematic Vignette & Gradient Overlays for Readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/60 pointer-events-none" />
         <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/10 to-black/60 pointer-events-none" />
-
-        {/* Navigation Bar inside the Framed Hero */}
-        <Navbar onOpenCV={onOpenCV} onNavigateToProjects={onNavigateToProjects} />
 
       </section>
     </div>
@@ -2606,8 +2600,14 @@ export default function App() {
 
       {view === "home" && (
         <div className="film-grain min-h-screen bg-black text-white relative">
+          {/* Floating Persistent Navbar that follows the user on scroll */}
+          <Navbar
+            onOpenCV={navigateToCV}
+            onNavigateToProjects={navigateToProjects}
+          />
+
           {/* Top Ticker Marquee - Transparent Without Background */}
-          <div className="w-full overflow-hidden py-2.5 bg-transparent relative z-50">
+          <div className="w-full overflow-hidden py-2.5 bg-transparent relative z-40">
             <div className="flex gap-8 animate-marquee whitespace-nowrap">
               {Array(4).fill(
                 "Ben Sam Oladoyin · AI & ML Engineer · Founder of BTEHub Solutions & Trax (trax.ng) · Building Production Intelligent Systems · Open for Global Roles · "
@@ -2623,7 +2623,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Hero with framed side margins, rounded corners, 3-button navbar, and existing background */}
+          {/* Hero with framed side margins, rounded corners, and existing background */}
           <Hero
             onOpenCV={navigateToCV}
             onNavigateToProjects={navigateToProjects}
