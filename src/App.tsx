@@ -1938,11 +1938,11 @@ function Navbar({
       </button>
 
       {/* On mobile: buttons fill full width centered. On sm+: buttons are absolutely centred over the navbar */}
-      {/* Mobile row — flex centered, no badge competing */}
+      {/* Mobile row — 44px WCAG touch compliant height */}
       <div className="flex sm:hidden items-center justify-center w-full gap-2 pointer-events-auto">
         <button
           onClick={onNavigateHome}
-          className={`bg-[#FF4800] text-black font-bold text-sm px-5 py-2 rounded-none shadow-md transition-all text-center cursor-pointer ${
+          className={`h-11 px-5 bg-[#FF4800] text-black font-bold text-sm rounded-none shadow-md flex items-center justify-center transition-all cursor-pointer ${
             activeView === "home" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
           }`}
           style={{ fontFamily: "var(--font-body)" }}
@@ -1951,7 +1951,7 @@ function Navbar({
         </button>
         <button
           onClick={onNavigateProjects}
-          className={`bg-[#22C55E] text-black font-bold text-sm px-5 py-2 rounded-full shadow-md transition-all cursor-pointer text-center ${
+          className={`h-11 px-5 bg-[#22C55E] text-black font-bold text-sm rounded-full shadow-md flex items-center justify-center transition-all cursor-pointer ${
             activeView === "projects" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
           }`}
           style={{ fontFamily: "var(--font-body)" }}
@@ -1960,7 +1960,7 @@ function Navbar({
         </button>
         <button
           onClick={onOpenCV}
-          className={`bg-[#8BB4F7] text-black font-bold text-sm px-5 py-2 rounded-lg shadow-md transition-all cursor-pointer text-center ${
+          className={`h-11 px-5 bg-[#8BB4F7] text-black font-bold text-sm rounded-lg shadow-md flex items-center justify-center transition-all cursor-pointer ${
             activeView === "cv" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
           }`}
           style={{ fontFamily: "var(--font-body)" }}
@@ -1969,11 +1969,11 @@ function Navbar({
         </button>
       </div>
 
-      {/* Desktop/tablet row — absolute centred over the badge-equipped navbar */}
-      <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 md:gap-3 pointer-events-auto">
+      {/* Desktop/tablet row — 48px height geometrically matching the 48px B·S badge */}
+      <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 md:gap-2.5 pointer-events-auto">
         <button
           onClick={onNavigateHome}
-          className={`bg-[#FF4800] text-black font-bold text-sm md:text-base lg:text-lg px-5 md:px-7 lg:px-9 py-2.5 md:py-3 rounded-none shadow-md transition-all text-center cursor-pointer ${
+          className={`h-11 md:h-12 px-6 md:px-8 bg-[#FF4800] text-black font-bold text-sm md:text-base rounded-none shadow-md flex items-center justify-center transition-all cursor-pointer ${
             activeView === "home" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
           }`}
           style={{ fontFamily: "var(--font-body)" }}
@@ -1982,7 +1982,7 @@ function Navbar({
         </button>
         <button
           onClick={onNavigateProjects}
-          className={`bg-[#22C55E] text-black font-bold text-sm md:text-base lg:text-lg px-5 md:px-7 lg:px-9 py-2.5 md:py-3 rounded-full shadow-md transition-all cursor-pointer text-center ${
+          className={`h-11 md:h-12 px-6 md:px-8 bg-[#22C55E] text-black font-bold text-sm md:text-base rounded-full shadow-md flex items-center justify-center transition-all cursor-pointer ${
             activeView === "projects" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
           }`}
           style={{ fontFamily: "var(--font-body)" }}
@@ -1991,7 +1991,7 @@ function Navbar({
         </button>
         <button
           onClick={onOpenCV}
-          className={`bg-[#8BB4F7] text-black font-bold text-sm md:text-base lg:text-lg px-5 md:px-7 lg:px-9 py-2.5 md:py-3 rounded-lg shadow-md transition-all cursor-pointer text-center ${
+          className={`h-11 md:h-12 px-6 md:px-8 bg-[#8BB4F7] text-black font-bold text-sm md:text-base rounded-lg shadow-md flex items-center justify-center transition-all cursor-pointer ${
             activeView === "cv" ? "brightness-110 ring-2 ring-white/50" : "hover:brightness-110 active:scale-95"
           }`}
           style={{ fontFamily: "var(--font-body)" }}
