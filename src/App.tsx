@@ -424,8 +424,8 @@ function ContactCTA({ onOpenContact }: { onOpenContact?: () => void }) {
   return (
     <section
       id="contact"
-      className="film-grain w-full relative flex items-center justify-center py-20 sm:py-28 md:py-36 bg-black select-none overflow-hidden my-0"
-      style={{ minHeight: "560px" }}
+      className="film-grain w-full relative flex items-center justify-center py-14 sm:py-20 md:py-32 bg-black select-none overflow-hidden my-0"
+      style={{ minHeight: "520px" }}
     >
       {/* Sculptural Black Obsidian / Basalt Monolith Background — Full bleed & high contrast */}
       <div
@@ -438,25 +438,20 @@ function ContactCTA({ onOpenContact }: { onOpenContact?: () => void }) {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none" />
 
-      {/* Centered Vibrant Orange Ticket */}
-      <div className="relative z-10 w-full max-w-[340px] sm:max-w-lg md:max-w-5xl px-4 sm:px-6 md:px-8 mx-auto">
+      {/* Centered Vibrant Orange Ticket Card — Proportional to mobile screen width (approx ~88-90% width) */}
+      <div className="relative z-10 w-full max-w-[365px] sm:max-w-[420px] md:max-w-4xl lg:max-w-5xl px-4 sm:px-6 mx-auto">
         <div
-          className="relative w-full rounded-sm overflow-hidden shadow-2xl py-12 sm:py-14 md:py-18 px-6 sm:px-12 md:px-20 flex flex-col items-center justify-center text-center"
+          className="relative w-full rounded-sm overflow-hidden shadow-2xl aspect-[1/1.16] sm:aspect-[1/1.12] md:aspect-auto min-h-[385px] sm:min-h-[415px] md:min-h-[300px] flex flex-col justify-between items-center text-center py-4 sm:py-5 md:py-14 px-4 sm:px-6 md:px-20 transition-all duration-300"
           style={{ backgroundColor: "#FF5500" }}
         >
-          {/* MOBILE ONLY (< md): Top & Bottom Punch Holes + Horizontal Dashed Tear Lines */}
-          <div className="md:hidden absolute top-0 left-0 right-0 flex justify-between px-6 sm:px-8 py-2 pointer-events-none">
-            <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-black shadow-inner -mt-2" />
-            <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-black shadow-inner -mt-2" />
-            <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-black shadow-inner -mt-2" />
-          </div>
-          <div className="md:hidden absolute top-4 left-0 right-0 border-b border-dashed border-black/35 pointer-events-none" />
-
-          <div className="md:hidden absolute bottom-4 left-0 right-0 border-t border-dashed border-black/35 pointer-events-none" />
-          <div className="md:hidden absolute bottom-0 left-0 right-0 flex justify-between px-6 sm:px-8 py-2 pointer-events-none">
-            <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-black shadow-inner -mb-2" />
-            <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-black shadow-inner -mb-2" />
-            <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-black shadow-inner -mb-2" />
+          {/* MOBILE ONLY (< md): Top Rivets/Holes & Top Perforated Dashed Line */}
+          <div className="md:hidden w-full flex flex-col items-center">
+            <div className="w-full flex justify-between items-center px-4 pt-1">
+              <div className="w-3.5 h-3.5 rounded-full bg-black shadow-inner" />
+              <div className="w-3.5 h-3.5 rounded-full bg-black shadow-inner" />
+              <div className="w-3.5 h-3.5 rounded-full bg-black shadow-inner" />
+            </div>
+            <div className="w-full border-b border-dashed border-black/40 mt-3" />
           </div>
 
           {/* DESKTOP ONLY (md+): Left & Right Punch Holes + Vertical Dashed Tear Lines */}
@@ -474,34 +469,46 @@ function ContactCTA({ onOpenContact }: { onOpenContact?: () => void }) {
             <div className="w-4 lg:w-5 h-4 lg:h-5 rounded-full bg-black shadow-inner" />
           </div>
 
-          {/* Typography & Call to Action */}
-          <h2
-            className="text-black leading-tight tracking-tight mb-2.5 sm:mb-3"
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
-              fontSize: "clamp(2rem, 5.5vw, 5.2rem)",
-              fontWeight: 400,
-            }}
-          >
-            Let's build something
-          </h2>
+          {/* Core Content: Typography & Call to Action (Centered comfortably with balanced padding) */}
+          <div className="my-auto py-2 sm:py-3 md:py-0 flex flex-col items-center justify-center">
+            <h2
+              className="text-black leading-[1.1] tracking-tight mb-2 sm:mb-3"
+              style={{
+                fontFamily: "var(--font-serif)",
+                fontStyle: "italic",
+                fontSize: "clamp(2rem, 5.8vw, 4.8rem)",
+                fontWeight: 400,
+              }}
+            >
+              Let's build something<br className="hidden sm:inline" /> extraordinary
+            </h2>
 
-          <p
-            className="text-black/85 font-medium text-xs sm:text-sm md:text-lg max-w-xl mb-6 sm:mb-8 leading-relaxed"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            No noise — just production-grade AI, LLMs, and real engineering.
-          </p>
+            <p
+              className="text-black/85 font-medium text-xs sm:text-sm md:text-base max-w-[260px] sm:max-w-sm md:max-w-xl mb-5 sm:mb-7 leading-relaxed"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              No noise — just production-grade AI, LLMs, and real engineering.
+            </p>
 
-          {/* Solid 90-degree Square Black Button */}
-          <button
-            onClick={onOpenContact}
-            className="bg-[#111111] hover:bg-black text-white font-bold text-xs sm:text-sm md:text-base px-8 sm:px-10 py-3 sm:py-3.5 rounded-none shadow-xl hover:scale-105 active:scale-95 transition-all inline-block cursor-pointer"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            Get in touch
-          </button>
+            {/* Solid 90-degree Square Black Button */}
+            <button
+              onClick={onOpenContact}
+              className="bg-black hover:bg-neutral-900 text-white font-bold text-xs sm:text-sm md:text-base px-7 sm:px-9 py-2.5 sm:py-3 rounded-none shadow-2xl hover:scale-105 active:scale-95 transition-all inline-block cursor-pointer tracking-wide"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              Get in touch
+            </button>
+          </div>
+
+          {/* MOBILE ONLY (< md): Bottom Perforated Dashed Line & Bottom Rivets/Holes */}
+          <div className="md:hidden w-full flex flex-col items-center">
+            <div className="w-full border-t border-dashed border-black/40 mb-3" />
+            <div className="w-full flex justify-between items-center px-4 pb-1">
+              <div className="w-3.5 h-3.5 rounded-full bg-black shadow-inner" />
+              <div className="w-3.5 h-3.5 rounded-full bg-black shadow-inner" />
+              <div className="w-3.5 h-3.5 rounded-full bg-black shadow-inner" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1396,23 +1403,6 @@ function ProjectCard({ project, isFirst }: { project: typeof PROJECTS[0]; isFirs
         alt={project.title}
         className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       />
-
-      {/* Floating 35mm Film Canister Sticker on First Card (matching reference screenshot) */}
-      {isFirst && (
-        <div className="absolute top-[28%] right-[14%] z-20 pointer-events-none animate-film-float">
-          <div className="w-11 h-16 bg-gradient-to-b from-[#181818] via-[#facc15] to-[#181818] rounded-md shadow-2xl border border-black/50 flex flex-col justify-between p-1.5 transform rotate-[22deg] opacity-95">
-            <div className="text-[7px] font-black tracking-tighter text-black uppercase leading-tight">
-              100
-            </div>
-            <div className="text-[6px] font-bold text-black text-center uppercase tracking-widest leading-none">
-              35mm<br />film
-            </div>
-            <div className="text-[7px] font-black text-black text-right leading-none">
-              24 exp
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Bottom Frosted Glass Gradient Overlay - Compact and snug */}
       <div className="absolute bottom-0 left-0 right-0 pt-6 pb-4 md:pb-5 px-5 md:px-7 bg-gradient-to-t from-black/85 via-black/40 to-transparent backdrop-blur-[4px] flex items-end justify-between transition-all duration-300">

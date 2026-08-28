@@ -1,44 +1,48 @@
-# figma-make-app
+# Portfolio Bensam (BTEHub Solutions)
 
-React + Vite + Tailwind CSS project running inside Figma Make.
+> **MANDATORY AGENT INSTRUCTION**: Before planning, architecting, building, or modifying code in this project, the agent MUST always review this document (`AGENTS.md`) and apply the skills in `.agents/skills/ui-ux-pro-max/` (typography pairings, design aesthetics, responsive patterns, and color palettes).
+
+Next.js 16 (App Router) + React 19 + Tailwind CSS v4 portfolio web application.
 
 ## Development Server
 
-A Vite development server is **already running** on `$PORT` (default 8443). You don't need to start it manually.
-
-- Preview URL: The user can access the running app through the preview panel
-- Hot reload: Changes to source files are reflected immediately
+Development server runs on port `8443`:
+- `npm run dev` - Starts Next.js development server at `http://localhost:8443`
+- `npm run build` - Builds production bundle
+- `npm run start` - Starts production server at port 8443
 
 ## Project Structure
 
-This is the canonical project structure. Start with task-relevant files below. Only follow imports or inspect other files when required, when a documented path is missing, or when the repository contradicts this guide.
+- `src/app/layout.tsx` - Root layout with global fonts, metadata, and providers
+- `src/app/page.tsx` - Main page route mounting `App.tsx`
+- `src/app/globals.css` - Global CSS, Tailwind v4 `@theme` configuration, font imports, custom animations, grain overlays, and print styles
+- `src/app/providers.tsx` - Client providers including Lenis smooth scrolling
+- `src/App.tsx` - Primary portfolio application component containing all core sections (Hero, About, Projects, Experience, Skills, Certifications, Interactive CV, Contact)
+- `src/AudioNarrationPlayer.tsx` - Audio narration playback component
+- `src/lib/` - Shared helper utilities (`cn`, etc.)
+- `.agents/skills/ui-ux-pro-max/` & `.agent/skills/ui-ux-pro-max/` - UI/UX Pro Max design intelligence skills and presets
 
-- `src/main.tsx` - React entrypoint; imports `src/index.css` and mounts `src/App.tsx` into the `#root` element
-- `src/App.tsx` - Primary application component and the usual starting point for UI work
-- `src/index.css` - Global CSS entrypoint and Tailwind CSS v4 import
-- `index.html` - Vite HTML shell containing the `#root` element and loading `src/main.tsx`
-- `package.json` - Project dependencies and the Vite build, development, preview, and formatting scripts
-- `vite.config.ts` - Vite configuration with React, Tailwind CSS v4, and Figma Make plugins plus the `@` alias for `src`
-- `.mise.toml` - Toolchain versions for Node.js and pnpm
+## Tech Stack & Dependencies
 
-## Dependencies
+- **Framework**: Next.js 16 (App Router) with React 19 & React DOM 19
+- **Language**: TypeScript 5.7
+- **Styling**: Tailwind CSS v4 with `@tailwindcss/postcss`
+- **Animations & Smooth Scroll**: `motion` (Framer Motion v12) & `lenis`
+- **Icons**: `@phosphor-icons/react`
+- **Design Intelligence**: UI/UX Pro Max (`ui-ux-pro-max`)
 
-- Runtime: React 19 and React DOM 19
-- Styling: Tailwind CSS v4 with the `@tailwindcss/vite` plugin
-- Build tooling: Vite 8, TypeScript 5.7, and `@vitejs/plugin-react`
-- Formatting: oxfmt
+## Styling & Design System
 
-## Styling
+- **Tailwind CSS v4**: Imported in `src/app/globals.css` via `@import 'tailwindcss';` with custom `@theme` variables (`--font-display`, `--font-body`, `--font-mono`, `--font-serif`).
+- **Typography**: Clash Display, Satoshi, Space Mono, Syne, Plus Jakarta Sans.
+- **Aesthetic**: Premium dark mode, architectural blueprint grid patterns, tactile paper/film grain noise overlays, smooth marquee tickers, and responsive layouts.
+- **Print / PDF CV Export**: Customized `@media print` styling in `src/app/globals.css` for clean CV exporting.
 
-This project uses **Tailwind CSS v4** through the `@tailwindcss/vite` plugin configured in `vite.config.ts`. `src/index.css` imports Tailwind with `@import 'tailwindcss';`. Use Tailwind utility classes directly in JSX and put global CSS or Tailwind v4 theme customization in `src/index.css`. This scaffold does not need a Tailwind config file or PostCSS config.
+## Code Quality & Guidelines
 
-`src/main.tsx` imports `src/index.css`, so global font wiring belongs in `src/index.css`. Keep CSS `@import` statements first, then add any `@font-face` rules and font-family defaults there.
-
-## Code quality
-
-- Use double quotes for strings containing apostrophes (`"We're here to help"`), or escape them in single-quoted strings. An unescaped apostrophe in a single-quoted string breaks the build.
-- Ensure JSX tags are closed and braces are balanced.
-- Export components as default exports.
+- Use double quotes for strings containing apostrophes (`"We're building..."`), or escape them in single-quoted strings.
+- Ensure all JSX tags are properly closed and TypeScript types are maintained.
+- When creating UI components, utilize Tailwind utility classes, Phosphor Icons, and the design rules from the `ui-ux-pro-max` skill.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
