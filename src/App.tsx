@@ -39,7 +39,7 @@ const PROJECTS = [
     tags: "Next.js · TypeScript · Framer Motion · AI/ML",
     date: "January 2026",
     desc: "A premium AI engineering and education hub dedicated to high-performance automation and gallery-quality digital design.",
-    img: "https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    img: "/projects/btehub.jpg",
     live: "https://btehub.vercel.app",
     github: "https://github.com/btehub-solutions",
   },
@@ -49,7 +49,7 @@ const PROJECTS = [
     tags: "TensorFlow · OpenCV · MediaPipe · MobileNetV2",
     date: "August 2025",
     desc: "Real-time driver monitoring system for drowsiness and distraction detection using computer vision and deep learning.",
-    img: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    img: "/projects/alertdrive.jpg",
     github: "https://github.com/btehub-solutions/AlertDrive_AI.git",
   },
   {
@@ -58,7 +58,7 @@ const PROJECTS = [
     tags: "Next.js · Tailwind CSS · TypeScript · SEO",
     date: "November 2025",
     desc: "Ogun State's tech news and startup media platform tracking the local technology movement, funding rounds, and builder ecosystem.",
-    img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    img: "/projects/trax.jpg",
     live: "https://trax.ng",
     github: "https://github.com/btehub-solutions/Trax",
   },
@@ -68,7 +68,7 @@ const PROJECTS = [
     tags: "FastAPI · Gemini API · Claude · PostgreSQL",
     date: "October 2025",
     desc: "A production-ready AI automation monorepo combining Next.js with FastAPI, integrating Gemini and Claude for scalable workflows.",
-    img: "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    img: "/projects/coreai.jpg",
     github: "https://github.com/btehub-solutions/CoreAI",
   },
   {
@@ -77,7 +77,7 @@ const PROJECTS = [
     tags: "Python · Flask · Scikit-learn · Pandas · React",
     date: "May 2025",
     desc: "AI-powered tax classification and liability prediction platform for Nigerian employees and businesses.",
-    img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    img: "/projects/taxnaija.jpg",
     github: "https://github.com/btehub-solutions/TaxNaija.git",
   },
   {
@@ -86,7 +86,7 @@ const PROJECTS = [
     tags: "Next.js · TypeScript · Tailwind · OpenAI API",
     date: "March 2025",
     desc: "A next-gen AI learning platform designed for future-ready professionals with active AI-fluent prompt and agent pipelines.",
-    img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    img: "/projects/vibeai.jpg",
     live: "http://vibeaihub.vercel.app/",
     github: "https://github.com/btehub-solutions/vibeai-frontend",
   },
@@ -104,7 +104,7 @@ const CERTS = [
   },
   {
     id: "aiml",
-    title: "AI/ML Bootcamp — Zero to Production",
+    title: "AI/ML Bootcamp: Zero to Production",
     issuer: "Udemy",
     year: "2023",
     category: "Machine Learning",
@@ -113,7 +113,7 @@ const CERTS = [
   },
   {
     id: "py",
-    title: "100 Days of Code — Python Pro",
+    title: "100 Days of Code: Python Pro",
     issuer: "Udemy",
     year: "2022",
     category: "Programming",
@@ -151,7 +151,7 @@ const COMMUNITY_ITEMS = [
   {
     id: "training",
     type: "Corporate Training",
-    title: "AI Training — GText Holdings, NBI, OTC",
+    title: "AI Training: GText Holdings, NBI, OTC",
     desc: "Upskilling enterprise teams on applied machine learning and the 4Ds Framework.",
     color: "bg-slate-300 text-black",
     shape: "rounded-lg",
@@ -159,7 +159,7 @@ const COMMUNITY_ITEMS = [
   {
     id: "keynote",
     type: "Keynote",
-    title: "World Radio Day 2026 — NUJ Ogun State",
+    title: "World Radio Day 2026: NUJ Ogun State",
     desc: "Delivered keynote on AI adoption for media professionals; also featured on OGTV and Splash FM 106.7.",
     color: "bg-violet-400 text-black",
     shape: "rounded-full",
@@ -300,7 +300,7 @@ const TESTIMONIALS = [
     color: "bg-emerald-400 text-black",
     shape: "rounded-full",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=80&w=200",
-    quote: "Working with Ben Sam was a game-changer. He doesn't just build ML models in isolation — he engineers complete products that bridge deep learning with intuitive, high-performance interfaces.",
+    quote: "Working with Ben Sam was a game-changer. He doesn't just build ML models in isolation, he engineers complete products that bridge deep learning with intuitive, high-performance interfaces.",
   },
   {
     id: "folarin",
@@ -427,7 +427,7 @@ function ContactCTA({ onOpenContact }: { onOpenContact?: () => void }) {
       className="film-grain w-full relative flex items-center justify-center py-14 sm:py-20 md:py-32 bg-black select-none overflow-hidden my-0"
       style={{ minHeight: "520px" }}
     >
-      {/* Sculptural Black Obsidian / Basalt Monolith Background — Full bleed & high contrast */}
+      {/* Sculptural Black Obsidian / Basalt Monolith Background: Full bleed & high contrast */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-90 contrast-125 grayscale pointer-events-none"
         style={{
@@ -438,7 +438,7 @@ function ContactCTA({ onOpenContact }: { onOpenContact?: () => void }) {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none" />
 
-      {/* Centered Vibrant Orange Ticket Card — Proportional to mobile screen width (approx ~88-90% width) */}
+      {/* Centered Vibrant Orange Ticket Card: Proportional to mobile screen width (approx ~88-90% width) */}
       <div className="relative z-10 w-full max-w-[365px] sm:max-w-[420px] md:max-w-4xl lg:max-w-5xl px-4 sm:px-6 mx-auto">
         <div
           className="relative w-full rounded-sm overflow-hidden shadow-2xl aspect-[1/1.16] sm:aspect-[1/1.12] md:aspect-auto min-h-[385px] sm:min-h-[415px] md:min-h-[300px] flex flex-col justify-between items-center text-center py-4 sm:py-5 md:py-14 px-4 sm:px-6 md:px-20 transition-all duration-300"
@@ -487,7 +487,7 @@ function ContactCTA({ onOpenContact }: { onOpenContact?: () => void }) {
               className="text-black/85 font-medium text-xs sm:text-sm md:text-base max-w-[260px] sm:max-w-sm md:max-w-xl mb-5 sm:mb-7 leading-relaxed"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              No noise — just production-grade AI, LLMs, and real engineering.
+              No noise, just production-grade AI, LLMs, and real engineering.
             </p>
 
             {/* Solid 90-degree Square Black Button */}
@@ -523,7 +523,7 @@ function Footer() {
         style={{ paddingTop: "48px", paddingBottom: "40px" }}
       >
         <div className="relative px-5 md:px-10" style={{ lineHeight: 0.88 }}>
-          {/* Decorative dots — desktop only */}
+          {/* Decorative dots: desktop only */}
           <div className="hidden md:block absolute w-4 h-4 rounded-full bg-white z-10" style={{ top: "18%", left: "29%" }} />
           <div className="hidden md:block absolute w-4 h-4 rounded-full bg-white z-10" style={{ top: "62%", left: "22%" }} />
 
@@ -616,7 +616,7 @@ function Experience() {
         </div>
 
         <div className="px-5 sm:px-6 md:px-10 pb-8 md:pb-14 relative z-10">
-          {/* Desktop Table Header — hidden on mobile */}
+          {/* Desktop Table Header: hidden on mobile */}
           <div
             className="hidden md:grid pb-3 border-b border-black/20"
             style={{ gridTemplateColumns: "2fr 1.4fr 1.4fr 2fr" }}
@@ -1073,7 +1073,7 @@ function About({ onOpenCV }: { onOpenCV?: () => void }) {
               applications. I founded <span className="text-white font-semibold underline underline-offset-2">BTEHub Solutions</span> and{" "}
               <span className="text-white font-semibold underline underline-offset-2">Trax (trax.ng)</span>, where I lead
               engineering and digital strategy. My work sits at the intersection of deep
-              learning, generative AI, and real-world deployment — from edge devices to
+              learning, generative AI, and real-world deployment, from edge devices to
               enterprise cloud infrastructure.
             </p>
 
@@ -1696,7 +1696,7 @@ function CVModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) 
             </div>
             <div>
               <h3 className="font-bold text-lg leading-tight" style={{ fontFamily: "var(--font-display)" }}>
-                Ben Sam Oladoyin — Curriculum Vitae
+                Ben Sam Oladoyin · Curriculum Vitae
               </h3>
               <p className="text-white/60 text-xs" style={{ fontFamily: "var(--font-body)" }}>
                 AI &amp; Machine Learning Engineer · Founder
@@ -1764,7 +1764,7 @@ function CVModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) 
             <div className="space-y-4">
               <div className="border-l-2 border-[#22C55E] pl-4">
                 <div className="flex justify-between items-start">
-                  <h5 className="font-bold text-white text-base">Founder &amp; Publisher — Trax (trax.ng)</h5>
+                  <h5 className="font-bold text-white text-base">Founder &amp; Publisher · Trax (trax.ng)</h5>
                   <span className="text-white/50 text-xs">2023 – Present</span>
                 </div>
                 <p className="text-white/70 text-xs mt-1">
@@ -1774,7 +1774,7 @@ function CVModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) 
 
               <div className="border-l-2 border-[#FF5500] pl-4">
                 <div className="flex justify-between items-start">
-                  <h5 className="font-bold text-white text-base">Founder &amp; Lead AI Engineer — BTEHub Solutions</h5>
+                  <h5 className="font-bold text-white text-base">Founder &amp; Lead AI Engineer · BTEHub Solutions</h5>
                   <span className="text-white/50 text-xs">2021 – Present</span>
                 </div>
                 <p className="text-white/70 text-xs mt-1">
@@ -1784,7 +1784,7 @@ function CVModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) 
 
               <div className="border-l-2 border-[#93C5FD] pl-4">
                 <div className="flex justify-between items-start">
-                  <h5 className="font-bold text-white text-base">AI/ML Engineer &amp; Head of Strategy — NBI Institute</h5>
+                  <h5 className="font-bold text-white text-base">AI/ML Engineer &amp; Head of Strategy · NBI Institute</h5>
                   <span className="text-white/50 text-xs">2022 – Present</span>
                 </div>
                 <p className="text-white/70 text-xs mt-1">
@@ -1801,9 +1801,9 @@ function CVModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) 
             </h4>
             <ul className="list-disc list-inside text-white/70 space-y-1 text-xs">
               <li>AWS Machine Learning Specialty &amp; Cloud Practitioner</li>
-              <li>AI/ML Bootcamp — Zero to Production &amp; Deep Learning Masterclass</li>
-              <li>Keynote Speaker — World Radio Day 2026 (NUJ Ogun State)</li>
-              <li>Cluster Team Lead — Ogun Tech Community (Mentoring 100+ Engineers)</li>
+              <li>AI/ML Bootcamp: Zero to Production &amp; Deep Learning Masterclass</li>
+              <li>Keynote Speaker: World Radio Day 2026 (NUJ Ogun State)</li>
+              <li>Cluster Team Lead · Ogun Tech Community (Mentoring 100+ Engineers)</li>
             </ul>
           </div>
         </div>
@@ -1832,36 +1832,34 @@ function ProjectsArchivePage({
 }) {
   return (
     <div className="min-h-screen bg-black text-white film-grain">
-      {/* Top Archive Hero Frame with film grain and pure black bg */}
-      <div className="w-full px-2 sm:px-2.5 pt-2 pb-2.5">
-        <section
-          className="film-grain relative w-full min-h-[460px] sm:min-h-[520px] md:min-h-[600px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10 flex flex-col justify-between p-5 sm:p-7 md:p-10 select-none"
-        >
-          {/* Top Shared Navbar with Project Active Highlight */}
-          <Navbar
-            activeView="projects"
-            onNavigateHome={onNavigateHome}
-            onNavigateProjects={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            onOpenCV={onOpenCV}
-          />
+      {/* Unframed Full-Bleed Projects Hero */}
+      <section
+        className="film-grain relative w-full min-h-[460px] sm:min-h-[520px] md:min-h-[580px] bg-black flex flex-col justify-between p-5 sm:p-7 md:p-10 select-none pb-8"
+      >
+        {/* Top Shared Navbar with Project Active Highlight */}
+        <Navbar
+          activeView="projects"
+          onNavigateHome={onNavigateHome}
+          onNavigateProjects={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onOpenCV={onOpenCV}
+        />
 
-          {/* Centered Massive Display Title: "Projects" */}
-          <div className="relative z-10 text-center my-auto py-12 md:py-16 select-none" style={{ lineHeight: 0.82 }}>
-            <h1
-              className="text-white font-extrabold tracking-tight leading-none"
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(5.5rem, 16vw, 17rem)",
-                letterSpacing: "-0.04em",
-              }}
-            >
-              Projects
-            </h1>
-          </div>
+        {/* Centered Massive Display Title: "Projects" */}
+        <div className="relative z-10 text-center my-auto py-12 md:py-16 select-none" style={{ lineHeight: 0.82 }}>
+          <h1
+            className="text-white font-extrabold tracking-tight leading-none"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(5.5rem, 16vw, 17rem)",
+              letterSpacing: "-0.04em",
+            }}
+          >
+            Projects
+          </h1>
+        </div>
 
-          <div className="relative z-10 pb-1" />
-        </section>
-      </div>
+        <div className="relative z-10 pb-1" />
+      </section>
 
       {/* 2-Column Framed Project Grid */}
       <div className="w-full px-2 sm:px-2.5 pb-2 sm:pb-2.5">
@@ -1927,7 +1925,7 @@ function Navbar({
         scrolled ? "top-3 sm:top-4" : "top-[42px] sm:top-[46px]"
       }`}
     >
-      {/* Brand Badge — hidden on mobile, visible sm+ */}
+      {/* Brand Badge: hidden on mobile, visible sm+ */}
       <button
         onClick={onNavigateHome}
         className="hidden sm:flex w-11 h-11 md:w-12 md:h-12 rounded-full bg-white items-center justify-center shrink-0 shadow-2xl hover:scale-105 active:scale-95 transition-transform pointer-events-auto cursor-pointer"
@@ -1941,7 +1939,7 @@ function Navbar({
         </span>
       </button>
 
-      {/* Mobile row — 44px WCAG touch compliant height */}
+      {/* Mobile row: 44px WCAG touch compliant height */}
       <div className="flex sm:hidden items-center justify-center w-full gap-2 pointer-events-auto">
         <button
           onClick={onNavigateHome}
@@ -1966,7 +1964,7 @@ function Navbar({
         </button>
       </div>
 
-      {/* Desktop/tablet row — 48px height geometrically matching the 48px B·S badge */}
+      {/* Desktop/tablet row: 48px height geometrically matching the 48px B·S badge */}
       <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 md:gap-2.5 pointer-events-auto">
         <button
           onClick={onNavigateHome}
