@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://bensamoladoyin.vercel.app"),
   title: "Ben Sam Oladoyin · AI & ML Engineer | Founder of Trax & BTEHub Solutions",
   description:
-    "Portfolio of Ben Sam Oladoyin · AI & ML Engineer with 5+ years of experience building and deploying production-grade ML models, LLM architectures, and scalable intelligent systems.",
+    "Portfolio of Ben Sam Oladoyin — AI & ML Engineer with 5+ years of experience building and deploying production-grade ML models, LLM architectures, and scalable intelligent systems.",
   keywords: [
     "Ben Sam Oladoyin",
     "AI Engineer",
