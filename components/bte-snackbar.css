@@ -1,0 +1,68 @@
+/**
+ * M3 Spec-Compliant Snackbar Component
+ * Reference: https://m3.material.io/components/snackbar/overview
+ */
+
+.bte-snackbar-host {
+  position: fixed;
+  inset-block-end: 24px;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-2, 8px);
+  z-index: 1000;
+  pointer-events: none;
+  max-width: calc(100vw - 32px);
+}
+
+.bte-snackbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--md-sys-spacing-4, 16px);
+  min-height: 48px;
+  padding-block: 8px;
+  padding-inline: 16px;
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  background-color: var(--md-sys-color-inverse-surface);
+  color: var(--md-sys-color-inverse-on-surface);
+  box-shadow: var(--md-sys-elevation-level3);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+  pointer-events: auto;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized-decelerate),
+              transform var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized-decelerate);
+}
+
+.bte-snackbar--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bte-snackbar__text {
+  flex: 1;
+}
+
+.bte-snackbar__action {
+  background: transparent;
+  border: none;
+  color: var(--md-sys-color-inverse-primary);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  cursor: pointer;
+  padding-block: 0;
+  padding-inline: 8px;
+  min-height: 36px;
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  transition: background-color var(--md-sys-motion-duration-short2) var(--md-sys-motion-easing-linear);
+}
+
+.bte-snackbar__action:hover {
+  background-color: color-mix(in srgb, var(--md-sys-color-inverse-primary) calc(var(--md-sys-state-hover-state-layer-opacity) * 100%), transparent);
+}

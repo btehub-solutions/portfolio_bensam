@@ -1,0 +1,100 @@
+/**
+ * M3 Spec-Compliant Bottom Sheet Component
+ * Reference: https://m3.material.io/components/bottom-sheets/overview
+ */
+
+.bte-bottom-sheet-scrim {
+  position: fixed;
+  inset: 0;
+  background-color: var(--md-sys-color-scrim);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+  transition: opacity var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+}
+
+.bte-bottom-sheet-scrim--visible {
+  opacity: 0.32;
+  pointer-events: auto;
+}
+
+.bte-bottom-sheet {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: 0;
+  margin-inline: auto;
+  max-width: 640px;
+  width: 100%;
+  max-height: calc(100vh - 72px);
+  background-color: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+  border-start-start-radius: var(--md-sys-shape-corner-extra-large);
+  border-start-end-radius: var(--md-sys-shape-corner-extra-large);
+  box-shadow: var(--md-sys-elevation-level1);
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+  box-sizing: border-box;
+  transform: translateY(100%);
+  transition: transform var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized-decelerate);
+  overflow: hidden;
+}
+
+.bte-bottom-sheet--open {
+  transform: translateY(0);
+}
+
+/* Drag Handle */
+.bte-bottom-sheet__drag-handle {
+  width: 100%;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  flex-shrink: 0;
+}
+
+.bte-bottom-sheet__drag-handle-pill {
+  width: 32px;
+  height: 4px;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.4;
+}
+
+/* Header & Content */
+.bte-bottom-sheet__header {
+  padding-block: var(--md-sys-spacing-2, 8px);
+  padding-inline: var(--md-sys-spacing-6, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bte-bottom-sheet__title {
+  font-family: var(--md-sys-typescale-title-large-font);
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+}
+
+.bte-bottom-sheet__body {
+  padding-block: var(--md-sys-spacing-4, 16px);
+  padding-inline: var(--md-sys-spacing-6, 24px);
+  overflow-y: auto;
+  flex: 1;
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.bte-bottom-sheet__actions {
+  padding-block: var(--md-sys-spacing-4, 16px);
+  padding-inline: var(--md-sys-spacing-6, 24px);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--md-sys-spacing-2, 8px);
+  border-block-start: 1px solid var(--md-sys-color-outline-variant);
+}

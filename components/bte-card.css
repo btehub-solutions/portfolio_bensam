@@ -1,0 +1,139 @@
+/**
+ * M3 Spec-Compliant Card Component
+ * Styles: Elevated, Filled, Outlined
+ * Reference: https://m3.material.io/components/cards/overview
+ */
+
+.bte-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--md-sys-shape-corner-medium);
+  padding: var(--md-sys-spacing-4, 16px);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--md-sys-color-on-surface);
+  box-sizing: border-box;
+  transition: box-shadow var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+              background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+              border-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+  outline: none;
+}
+
+/* Elevated Card */
+.bte-card--elevated {
+  background-color: var(--md-sys-color-surface-container-low);
+  box-shadow: var(--md-sys-elevation-level1);
+}
+
+.bte-card--elevated:hover:not([disabled]) {
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+.bte-card--elevated:active:not([disabled]) {
+  box-shadow: var(--md-sys-elevation-level1);
+}
+
+/* Filled Card */
+.bte-card--filled {
+  background-color: var(--md-sys-color-surface-container-highest);
+  box-shadow: var(--md-sys-elevation-level0);
+}
+
+.bte-card--filled:hover:not([disabled]) {
+  box-shadow: var(--md-sys-elevation-level1);
+}
+
+.bte-card--filled:active:not([disabled]) {
+  box-shadow: var(--md-sys-elevation-level0);
+}
+
+/* Outlined Card */
+.bte-card--outlined {
+  background-color: var(--md-sys-color-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  box-shadow: var(--md-sys-elevation-level0);
+}
+
+.bte-card--outlined:hover:not([disabled]) {
+  box-shadow: var(--md-sys-elevation-level1);
+  border-color: var(--md-sys-color-outline);
+}
+
+.bte-card--outlined:active:not([disabled]) {
+  box-shadow: var(--md-sys-elevation-level0);
+}
+
+/* State Layer & Ripple overlay */
+.bte-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: var(--md-sys-color-on-surface);
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-short2) var(--md-sys-motion-easing-linear);
+}
+
+.bte-card:hover:not([disabled])::before {
+  opacity: var(--md-sys-state-hover-state-layer-opacity);
+}
+
+.bte-card:focus-visible::before {
+  opacity: var(--md-sys-state-focus-state-layer-opacity);
+}
+
+.bte-card:active:not([disabled])::before {
+  opacity: var(--md-sys-state-pressed-state-layer-opacity);
+}
+
+.bte-card:focus-visible {
+  outline: 3px solid var(--md-sys-color-primary);
+  outline-offset: 2px;
+}
+
+/* Disabled State */
+.bte-card[disabled],
+.bte-card[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.38;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+/* Sub-elements */
+.bte-card__headline {
+  font-family: var(--md-sys-typescale-title-large-font);
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+  color: var(--md-sys-color-on-surface);
+  margin-block-end: var(--md-sys-spacing-1, 4px);
+}
+
+.bte-card__subhead {
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  font-weight: var(--md-sys-typescale-body-medium-weight);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+  color: var(--md-sys-color-on-surface-variant);
+  margin-block-end: var(--md-sys-spacing-3, 12px);
+}
+
+.bte-card__body {
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  font-weight: var(--md-sys-typescale-body-medium-weight);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+  color: var(--md-sys-color-on-surface-variant);
+  flex: 1;
+}
+
+.bte-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-2, 8px);
+  margin-block-start: var(--md-sys-spacing-4, 16px);
+  justify-content: flex-end;
+}

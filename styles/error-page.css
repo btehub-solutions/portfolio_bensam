@@ -1,0 +1,37 @@
+/**
+ * M3 Error & Offline Page Styles
+ * Version: 3.0
+ */
+
+.error-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--md-sys-spacing-6, 24px);
+  text-align: center;
+  background-color: var(--md-sys-color-surface);
+}
+
+.error-page-icon-badge {
+  width: 96px;
+  height: 96px;
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block-end: var(--md-sys-spacing-6, 24px);
+}
+
+.error-page-icon-badge .material-symbols-outlined {
+  font-size: 48px;
+}
+
+.error-page-description {
+  max-width: 440px;
+  margin-block: var(--md-sys-spacing-3, 12px) var(--md-sys-spacing-6, 24px);
+  color: var(--md-sys-color-on-surface-variant);
+}

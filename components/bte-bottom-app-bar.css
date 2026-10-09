@@ -1,0 +1,29 @@
+/**
+ * M3 Spec-Compliant Bottom App Bar Component
+ * In-context screen actions and integrated FAB
+ * Reference: https://m3.material.io/components/bottom-app-bar/overview
+ */
+
+.bte-bottom-app-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding-block: var(--md-sys-spacing-2, 8px);
+  padding-inline: var(--md-sys-spacing-4, 16px);
+  background-color: var(--md-sys-color-surface-container);
+  border-block-start: 1px solid var(--md-sys-color-outline-variant);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.bte-bottom-app-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-2, 8px);
+}
+
+.bte-bottom-app-bar__fab-slot {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,61 @@
+/**
+ * M3 Spec-Compliant Search Bar Component
+ * Reference: https://m3.material.io/components/search/overview
+ */
+
+.bte-search-bar {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  min-height: 56px;
+  padding-block: 0;
+  padding-inline: var(--md-sys-spacing-4, 16px);
+  background-color: var(--md-sys-color-surface-container-high);
+  border-radius: var(--md-sys-shape-corner-full);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--md-sys-elevation-level1);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 720px;
+  gap: var(--md-sys-spacing-3, 12px);
+  transition: box-shadow var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+              background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.bte-search-bar:focus-within {
+  box-shadow: var(--md-sys-elevation-level2);
+  background-color: var(--md-sys-color-surface-container-highest);
+}
+
+.bte-search-bar__leading-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--md-sys-color-on-surface-variant);
+  pointer-events: none;
+}
+
+.bte-search-bar__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  font-weight: var(--md-sys-typescale-body-large-weight);
+  color: var(--md-sys-color-on-surface);
+  padding: 0;
+  min-height: auto;
+  min-width: 0;
+}
+
+.bte-search-bar__input::placeholder {
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 1;
+}
+
+.bte-search-bar__trailing-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

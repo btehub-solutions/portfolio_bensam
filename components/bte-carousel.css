@@ -1,0 +1,75 @@
+/**
+ * M3 Spec-Compliant Carousel Component
+ * Multi-browse and Hero Carousel Layouts with Scroll Snap
+ * Reference: https://m3.material.io/components/carousel/overview
+ */
+
+.bte-carousel-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-3, 12px);
+}
+
+.bte-carousel {
+  display: flex;
+  gap: var(--md-sys-spacing-4, 16px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-block: var(--md-sys-spacing-2, 8px);
+  padding-inline: var(--md-sys-spacing-1, 4px);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.bte-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.bte-carousel__item {
+  flex: 0 0 280px;
+  height: 200px;
+  scroll-snap-align: start;
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--md-sys-elevation-level1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--md-sys-spacing-4, 16px);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+              box-shadow var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.bte-carousel__item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+.bte-carousel__item-title {
+  font-family: var(--md-sys-typescale-title-medium-font);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: var(--md-sys-typescale-title-medium-weight);
+  color: var(--md-sys-color-on-surface);
+  z-index: 1;
+}
+
+.bte-carousel__item-subtitle {
+  font-family: var(--md-sys-typescale-body-small-font);
+  font-size: var(--md-sys-typescale-body-small-size);
+  color: var(--md-sys-color-on-surface-variant);
+  z-index: 1;
+}
+
+.bte-carousel__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--md-sys-spacing-2, 8px);
+}

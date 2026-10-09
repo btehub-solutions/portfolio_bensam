@@ -34,13 +34,53 @@ const NAV_LINKS = [
 
 const PROJECTS = [
   {
+    title: "Trax (trax.ng)",
+    category: "Media & Tech Platform",
+    tags: "Next.js · Tailwind CSS · TypeScript · SEO · Ecosystem",
+    date: "November 2025",
+    desc: "Ogun State's tech news and startup media platform tracking the local technology movement, funding rounds, and builder ecosystem.",
+    img: "/trax-showcase.jpg",
+    live: "https://www.trax.ng/",
+    github: "https://github.com/btehub-solutions/Trax",
+  },
+  {
+    title: "Trax Jobs (jobs.trax.ng)",
+    category: "Talent & Careers Platform",
+    tags: "Next.js · Tailwind CSS · TypeScript · Talent Network",
+    date: "October 2026",
+    desc: "Curated African tech talent marketplace and jobs network connecting vetted software engineers, designers, and marketers with top startups.",
+    img: "/trax-jobs-showcase.jpg?v=2",
+    live: "https://jobs.trax.ng/",
+    github: "https://github.com/btehub-solutions/Trax",
+  },
+  {
+    title: "Trax Ecosystem (echo.trax.ng)",
+    category: "Ecosystem & Media Portal",
+    tags: "Next.js · TypeScript · Brand Identity · Ecosystem Hub",
+    date: "September 2026",
+    desc: "The unified Trax portal connecting Trax Events, TraxMedia publication, and Trax Jobs into a cohesive African technology movement.",
+    img: "/trax-echo-showcase.jpg",
+    live: "https://echo.trax.ng/",
+    github: "https://github.com/btehub-solutions/Trax",
+  },
+  {
     title: "BTEHub Solutions",
-    category: "AI Application",
-    tags: "Next.js · TypeScript · Framer Motion · AI/ML",
+    category: "AI & Automation Platform",
+    tags: "Next.js · TypeScript · FastAPI · AI/ML Pipelines",
     date: "January 2026",
-    desc: "A premium AI engineering and education hub dedicated to high-performance automation and gallery-quality digital design.",
-    img: "https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    live: "https://btehub.vercel.app",
+    desc: "A premium AI engineering and automation platform featuring active pipelines, 94.7% optimized model accuracy, and autonomous workflows.",
+    img: "/btehub-solutions-showcase.jpg",
+    live: "https://btehub.vercel.app/",
+    github: "https://github.com/btehub-solutions",
+  },
+  {
+    title: "BTEHub Academy",
+    category: "EdTech & AI Education",
+    tags: "Next.js · TypeScript · Tailwind · Course Platform",
+    date: "February 2026",
+    desc: "Premier hands-on AI academy offering cohort courses in Python for AI, Generative AI & LLMs, and Workflow Automation.",
+    img: "/btehub-academy-showcase.jpg",
+    live: "https://btehubacademy.vercel.app/",
     github: "https://github.com/btehub-solutions",
   },
   {
@@ -51,16 +91,6 @@ const PROJECTS = [
     desc: "Real-time driver monitoring system for drowsiness and distraction detection using computer vision and deep learning.",
     img: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
     github: "https://github.com/btehub-solutions/AlertDrive_AI.git",
-  },
-  {
-    title: "Trax (trax.ng)",
-    category: "Web Application",
-    tags: "Next.js · Tailwind CSS · TypeScript · SEO",
-    date: "November 2025",
-    desc: "Ogun State's tech news and startup media platform tracking the local technology movement, funding rounds, and builder ecosystem.",
-    img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    live: "https://trax.ng",
-    github: "https://github.com/btehub-solutions/Trax",
   },
   {
     title: "CoreAI Monorepo",
@@ -1257,13 +1287,15 @@ function FeaturedSpotlight() {
       <section
         className="film-grain relative w-full rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10 flex flex-col p-5 sm:p-8 md:p-12 select-none"
       >
-        {/* Gritty Monochrome Robot Background */}
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-25 contrast-160 grayscale pointer-events-none"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920')`,
-          }}
-        />
+        {/* Founder Portrait Background - Ben Sam Oladoyin */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <img
+            src="/bensam-founder-portrait.png"
+            alt="Ben Sam Oladoyin - Founder"
+            className="w-full h-full object-cover object-top sm:object-[center_18%] opacity-35 contrast-125 grayscale"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/75 pointer-events-none" />
         <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/20 to-black/85 pointer-events-none" />
 
         {/* Headline Header */}
@@ -1395,35 +1427,35 @@ function ProjectCard({ project, isFirst }: { project: typeof PROJECTS[0]; isFirs
       href={targetUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative overflow-hidden rounded-xl md:rounded-2xl group cursor-pointer aspect-[3/4] sm:aspect-[16/11] bg-[#141414] shadow-2xl block select-none"
+      className="relative overflow-hidden rounded-xl md:rounded-2xl group cursor-pointer aspect-[16/10] bg-[#141414] border border-white/10 shadow-2xl block select-none"
     >
       {/* Full-bleed Project Image */}
       <img
         src={project.img}
         alt={project.title}
-        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
       />
 
-      {/* Bottom Frosted Glass Gradient Overlay - Compact and snug */}
-      <div className="absolute bottom-0 left-0 right-0 pt-6 pb-4 md:pb-5 px-5 md:px-7 bg-gradient-to-t from-black/85 via-black/40 to-transparent backdrop-blur-[4px] flex items-end justify-between transition-all duration-300">
-        <div className="flex-1 pr-4">
+      {/* Slim, Low-Profile Frosted Overlay - Preserves original design system with minimal height */}
+      <div className="absolute bottom-0 left-0 right-0 pt-3 pb-2.5 sm:pb-3 px-4 sm:px-6 bg-gradient-to-t from-black/85 via-black/45 to-transparent backdrop-blur-[2px] flex items-center justify-between transition-all duration-300 z-10">
+        <div className="flex-1 pr-3 min-w-0">
           <h3
-            className="text-white font-semibold text-base md:text-lg lg:text-xl tracking-tight leading-snug"
+            className="text-white font-semibold text-sm sm:text-base md:text-lg tracking-tight leading-tight truncate drop-shadow-md"
             style={{ fontFamily: "var(--font-body)" }}
           >
             {project.title}
           </h3>
           <p
-            className="text-white/75 text-xs md:text-sm font-medium mt-1 tracking-normal"
+            className="text-white/75 text-[11px] sm:text-xs font-medium mt-0.5 truncate tracking-normal drop-shadow"
             style={{ fontFamily: "var(--font-body)" }}
           >
             {project.category} · {project.date || project.tags}
           </p>
         </div>
 
-        {/* Elegant Arrow Indicator */}
-        <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-white text-white group-hover:text-black flex items-center justify-center font-bold text-xs transition-all duration-300 backdrop-blur-md shrink-0 mb-0.5">
-          <ArrowUpRight size={15} weight="bold" />
+        {/* Compact Arrow Indicator */}
+        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 group-hover:bg-white text-white group-hover:text-black flex items-center justify-center font-bold text-xs transition-all duration-300 backdrop-blur-md shrink-0">
+          <ArrowUpRight size={14} weight="bold" />
         </div>
       </div>
     </a>
@@ -1902,15 +1934,20 @@ function Navbar({
   onNavigateHome,
   onNavigateProjects,
   onOpenCV,
+  embedded = false,
+  rightAction,
 }: {
   activeView?: "home" | "projects" | "cv";
   onNavigateHome?: () => void;
   onNavigateProjects?: () => void;
   onOpenCV?: () => void;
+  embedded?: boolean;
+  rightAction?: React.ReactNode;
 }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    if (embedded) return;
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
     };
@@ -1921,51 +1958,55 @@ function Navbar({
   return (
     <nav
       aria-label="Main Navigation"
-      className={`fixed left-0 right-0 z-50 px-3 sm:px-4 md:px-6 flex items-center justify-between pointer-events-none transition-all duration-300 ${
-        scrolled ? "top-3 sm:top-4" : "top-[42px] sm:top-[46px]"
-      }`}
+      className={
+        embedded
+          ? "relative w-full flex items-center justify-between pointer-events-auto"
+          : `fixed left-0 right-0 z-50 px-3 sm:px-4 md:px-6 flex items-center justify-between pointer-events-none transition-all duration-300 ${
+              scrolled ? "top-2.5 sm:top-3.5" : "top-3 sm:top-4"
+            }`
+      }
     >
-      {/* Brand Badge: hidden on mobile, visible sm+ */}
+      {/* Brand Badge */}
       <button
         onClick={onNavigateHome}
-        className="hidden sm:flex w-11 h-11 md:w-12 md:h-12 rounded-full bg-white items-center justify-center shrink-0 shadow-2xl hover:scale-105 active:scale-95 transition-transform pointer-events-auto cursor-pointer"
+        className="flex w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-white items-center justify-center shrink-0 shadow-2xl hover:scale-105 active:scale-95 transition-transform pointer-events-auto cursor-pointer"
         title="Ben Sam Portfolio"
       >
         <span
-          className="text-black text-sm md:text-base font-black tracking-tight"
+          className="text-black text-xs sm:text-sm md:text-base font-black tracking-tight"
           style={{ fontFamily: "var(--font-display)" }}
         >
           B·S
         </span>
       </button>
 
-      {/* Mobile row: 44px WCAG touch compliant height */}
-      <div className="flex sm:hidden items-center justify-center w-full gap-2 pointer-events-auto">
+      {/* Mobile row: vertically and horizontally centered */}
+      <div className="flex sm:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-1.5 pointer-events-auto">
         <button
           onClick={onNavigateHome}
-          className="h-11 px-5 bg-[#FF4800] text-black font-bold text-sm rounded-none shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
+          className="h-10 px-3.5 bg-[#FF4800] text-black font-bold text-xs rounded-none shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
           style={{ fontFamily: "var(--font-body)" }}
         >
           Home
         </button>
         <button
           onClick={onNavigateProjects}
-          className="h-11 px-5 bg-[#22C55E] text-black font-bold text-sm rounded-full shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
+          className="h-10 px-3.5 bg-[#22C55E] text-black font-bold text-xs rounded-full shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
           style={{ fontFamily: "var(--font-body)" }}
         >
           Project
         </button>
         <button
           onClick={onOpenCV}
-          className="h-11 px-5 bg-[#8BB4F7] text-black font-bold text-sm rounded-lg shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
+          className="h-10 px-3.5 bg-[#8BB4F7] text-black font-bold text-xs rounded-lg shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
           style={{ fontFamily: "var(--font-body)" }}
         >
           CV
         </button>
       </div>
 
-      {/* Desktop/tablet row: 48px height geometrically matching the 48px B·S badge */}
-      <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 md:gap-2.5 pointer-events-auto">
+      {/* Desktop/tablet row: mathematically centered on exact same vertical axis as B·S badge */}
+      <div className="hidden sm:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-2 md:gap-2.5 pointer-events-auto">
         <button
           onClick={onNavigateHome}
           className="h-11 md:h-12 px-6 md:px-8 bg-[#FF4800] text-black font-bold text-sm md:text-base rounded-none shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
@@ -1989,8 +2030,12 @@ function Navbar({
         </button>
       </div>
 
-      {/* Right Spacer for balance on desktop */}
-      <div className="hidden sm:block w-11 md:w-12 shrink-0 pointer-events-none" />
+      {/* Right side action or spacer */}
+      {rightAction ? (
+        <div className="flex items-center shrink-0 pointer-events-auto">{rightAction}</div>
+      ) : (
+        <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 shrink-0 pointer-events-none" />
+      )}
     </nav>
   );
 }
@@ -2066,23 +2111,23 @@ function CVPage({
     <div className="min-h-screen bg-black text-white film-grain">
       {/* Top Header Navbar Frame */}
       <div className="no-print w-full px-2 sm:px-2.5 pt-2 pb-2.5">
-        <div className="film-grain relative w-full min-h-[72px] sm:min-h-[80px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10 px-4 sm:px-8 py-4 flex items-center justify-between">
+        <div className="film-grain relative w-full rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10 px-4 sm:px-8 py-3.5 sm:py-4 flex items-center">
           <Navbar
             activeView="cv"
+            embedded
             onNavigateHome={onNavigateHome}
             onNavigateProjects={onNavigateProjects}
             onOpenCV={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            rightAction={
+              <button
+                onClick={handlePrint}
+                className="inline-flex items-center gap-2 bg-white text-black font-bold text-xs md:text-sm px-4 md:px-5 h-11 md:h-12 rounded-full shadow-md hover:bg-white/90 active:scale-95 transition-all cursor-pointer"
+              >
+                <DownloadSimple size={18} weight="bold" />
+                <span>Download PDF</span>
+              </button>
+            }
           />
-
-          <div className="hidden lg:flex items-center gap-2 relative z-40 ml-auto pointer-events-auto">
-            <button
-              onClick={handlePrint}
-              className="inline-flex items-center gap-2 bg-white text-black font-bold text-xs md:text-sm px-4 md:px-5 py-2.5 rounded-full shadow-md hover:bg-white/90 active:scale-95 transition-all cursor-pointer"
-            >
-              <DownloadSimple size={18} weight="bold" />
-              <span>Download PDF</span>
-            </button>
-          </div>
         </div>
       </div>
 
@@ -2110,8 +2155,27 @@ function CVPage({
           </div>
 
           {/* Profile Hero Header Card */}
-          <div className="bg-[#0f172a]/60 border border-white/10 rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-10 mb-12 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
-            <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl shrink-0 bg-black/60">
+          <div className="relative overflow-hidden bg-[#0f172a]/60 border border-white/10 rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-10 mb-12 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+            {/* Professional Blueprint / Architectural Square Box Grid */}
+            <div
+              className="absolute inset-0 pointer-events-none opacity-20"
+              style={{
+                backgroundImage: `
+                  linear-gradient(to right, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 1px, transparent 1px)
+                `,
+                backgroundSize: "28px 28px",
+              }}
+            />
+            {/* Subtle radial depth gradient for mature contrast */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: "radial-gradient(ellipse 70% 60% at 20% 30%, rgba(255, 255, 255, 0.04), transparent 70%)",
+              }}
+            />
+
+            <div className="relative z-10 w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl shrink-0 bg-black/60">
               <img
                 src="/bensam-portrait.jpg"
                 alt="Ben Sam Oladoyin"
@@ -2119,7 +2183,7 @@ function CVPage({
               />
             </div>
 
-            <div className="flex-1 text-center md:text-left">
+            <div className="relative z-10 flex-1 text-center md:text-left">
               <h1
                 className="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight mb-2"
                 style={{ fontFamily: "var(--font-display)" }}
@@ -2561,8 +2625,8 @@ export default function App() {
             onOpenCV={navigateToCV}
           />
 
-          {/* Top Ticker Marquee - Transparent Without Background */}
-          <div className="w-full overflow-hidden py-2.5 bg-transparent relative z-40">
+          {/* Top Ticker Marquee - Positioned cleanly below the floating navbar */}
+          <div className="w-full overflow-hidden pt-18 sm:pt-20 pb-3 bg-transparent relative z-30">
             <div className="flex gap-8 animate-marquee whitespace-nowrap">
               {Array(4).fill(
                 "Ben Sam Oladoyin · AI & ML Engineer · Founder of BTEHub Solutions & Trax (trax.ng) · Building Production Intelligent Systems · Open for Global Roles · "

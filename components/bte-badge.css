@@ -1,0 +1,55 @@
+/**
+ * M3 Spec-Compliant Badge Component
+ * Small (dot) and Large (numeric) Badges
+ * Reference: https://m3.material.io/components/badges/overview
+ */
+
+.bte-badge-anchor {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Small dot badge (6dp diameter) */
+.bte-badge-dot {
+  position: absolute;
+  inset-block-start: 4px;
+  inset-inline-end: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-error);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Large numeric badge (16dp min height, expands horizontally) */
+.bte-badge {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  transform: translate(30%, -20%);
+  min-width: 16px;
+  height: 16px;
+  padding-block: 0;
+  padding-inline: 4px;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-error);
+  color: var(--md-sys-color-on-error);
+  font-family: var(--md-sys-typescale-label-small-font);
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-weight: var(--md-sys-typescale-label-small-weight);
+  line-height: var(--md-sys-typescale-label-small-line-height);
+  letter-spacing: var(--md-sys-typescale-label-small-tracking);
+  text-align: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 10;
+}
+
+:dir(rtl) .bte-badge,
+[dir="rtl"] .bte-badge {
+  transform: translate(-30%, -20%);
+}

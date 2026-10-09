@@ -44,9 +44,15 @@ Development server runs on port `8443`:
 - Ensure all JSX tags are properly closed and TypeScript types are maintained.
 - When creating UI components, utilize Tailwind utility classes, Phosphor Icons, and the design rules from the `ui-ux-pro-max` skill.
 
+## Strict Agent Execution Rules
+
+- **Direct & Immediate Execution**: Once a task is given and understood, implement and get it done ASAP.
+- **Zero Time Waste / No Irrelevant Actions**: Do NOT browse unprompted, do NOT perform unrequested side investigations, and do NOT waste time or credits on irrelevant tasks.
+- **Strict Focus**: Execute precisely what is requested, verify the changes swiftly, and keep all output concise and direct.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
-# This is NOT the Next.js you know
+## This is NOT the Next.js you know
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 

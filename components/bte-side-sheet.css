@@ -1,0 +1,83 @@
+/**
+ * M3 Spec-Compliant Side Sheet Component
+ * Modal & Standard (Coplanar) Side Sheets
+ * Reference: https://m3.material.io/components/side-sheets/overview
+ */
+
+.bte-side-sheet-scrim {
+  position: fixed;
+  inset: 0;
+  background-color: var(--md-sys-color-scrim);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+  transition: opacity var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+}
+
+.bte-side-sheet-scrim--visible {
+  opacity: 0.32;
+  pointer-events: auto;
+}
+
+.bte-side-sheet {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-end: 0;
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+  border-start-start-radius: var(--md-sys-shape-corner-extra-large);
+  border-end-start-radius: var(--md-sys-shape-corner-extra-large);
+  box-shadow: var(--md-sys-elevation-level1);
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+  box-sizing: border-box;
+  transform: translateX(100%);
+  transition: transform var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized-decelerate);
+  overflow: hidden;
+}
+
+:dir(rtl) .bte-side-sheet,
+[dir="rtl"] .bte-side-sheet {
+  transform: translateX(-100%);
+}
+
+.bte-side-sheet--open {
+  transform: translateX(0) !important;
+}
+
+.bte-side-sheet__header {
+  padding-block: var(--md-sys-spacing-4, 16px);
+  padding-inline: var(--md-sys-spacing-6, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-block-end: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.bte-side-sheet__title {
+  font-family: var(--md-sys-typescale-title-large-font);
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
+}
+
+.bte-side-sheet__body {
+  padding: var(--md-sys-spacing-6, 24px);
+  overflow-y: auto;
+  flex: 1;
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.bte-side-sheet__actions {
+  padding-block: var(--md-sys-spacing-4, 16px);
+  padding-inline: var(--md-sys-spacing-6, 24px);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--md-sys-spacing-2, 8px);
+  border-block-start: 1px solid var(--md-sys-color-outline-variant);
+}

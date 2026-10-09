@@ -1,0 +1,112 @@
+/**
+ * M3 Spec-Compliant Date Picker Component
+ * Reference: https://m3.material.io/components/date-pickers/overview
+ */
+
+.bte-date-picker {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 328px;
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  box-shadow: var(--md-sys-elevation-level3);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.bte-date-picker__header {
+  padding-block: var(--md-sys-spacing-4, 16px) var(--md-sys-spacing-3, 12px);
+  padding-inline: var(--md-sys-spacing-6, 24px);
+  border-block-end: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.bte-date-picker__supporting-text {
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  color: var(--md-sys-color-on-surface-variant);
+  margin-block-end: var(--md-sys-spacing-1, 4px);
+}
+
+.bte-date-picker__headline {
+  font-family: var(--md-sys-typescale-headline-large-font);
+  font-size: 28px;
+  font-weight: var(--md-sys-typescale-headline-large-weight);
+  color: var(--md-sys-color-on-surface);
+}
+
+.bte-date-picker__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--md-sys-spacing-2, 8px);
+  padding-inline: var(--md-sys-spacing-4, 16px);
+}
+
+.bte-date-picker__month-label {
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: 500;
+}
+
+.bte-date-picker__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-family: var(--md-sys-typescale-body-small-font);
+  font-size: var(--md-sys-typescale-body-small-size);
+  color: var(--md-sys-color-on-surface-variant);
+  padding-inline: var(--md-sys-spacing-3, 12px);
+  padding-block: var(--md-sys-spacing-1, 4px);
+}
+
+.bte-date-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  padding: var(--md-sys-spacing-3, 12px);
+}
+
+.bte-date-picker__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-inline: auto;
+  border-radius: var(--md-sys-shape-corner-full);
+  border: none;
+  background: transparent;
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  cursor: pointer;
+  transition: background-color var(--md-sys-motion-duration-short2) var(--md-sys-motion-easing-linear);
+}
+
+.bte-date-picker__day:hover:not([disabled]) {
+  background-color: var(--md-sys-color-surface-container-highest);
+}
+
+.bte-date-picker__day--today {
+  border: 1px solid var(--md-sys-color-primary);
+  color: var(--md-sys-color-primary);
+}
+
+.bte-date-picker__day--selected {
+  background-color: var(--md-sys-color-primary) !important;
+  color: var(--md-sys-color-on-primary) !important;
+}
+
+.bte-date-picker__day--empty {
+  pointer-events: none;
+  cursor: default;
+}
+
+.bte-date-picker__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--md-sys-spacing-2, 8px);
+  padding: var(--md-sys-spacing-3, 12px) var(--md-sys-spacing-4, 16px);
+}

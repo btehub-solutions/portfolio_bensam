@@ -1,0 +1,76 @@
+/**
+ * M3 Authentication & Account Page Styles
+ * Version: 3.0
+ */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--md-sys-spacing-4, 16px);
+  background-color: var(--md-sys-color-surface-container-lowest);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  padding-block: var(--md-sys-spacing-7, 32px);
+  padding-inline: var(--md-sys-spacing-6, 24px);
+}
+
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block-end: var(--md-sys-spacing-6, 24px);
+  text-align: center;
+  gap: var(--md-sys-spacing-3, 12px);
+}
+
+.auth-logo-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-logo-icon .material-symbols-outlined {
+  font-size: 32px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-5, 20px);
+}
+
+.auth-form md-filled-text-field {
+  width: 100%;
+}
+
+.auth-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-feedback-banner {
+  display: none;
+  align-items: center;
+  gap: var(--md-sys-spacing-3, 12px);
+  padding: var(--md-sys-spacing-3, 12px) var(--md-sys-spacing-4, 16px);
+  border-radius: var(--md-sys-shape-corner-small);
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+}
+
+.auth-feedback-banner--visible {
+  display: flex;
+}

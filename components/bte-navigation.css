@@ -1,0 +1,206 @@
+/**
+ * M3 Spec-Compliant Navigation Components
+ * Navigation Bar (Compact), Navigation Rail (Medium), Navigation Drawer (Expanded)
+ * Reference: https://m3.material.io/components/navigation-bar/overview
+ */
+
+/* ==========================================================================
+   Navigation Bar (Compact screens: < 600px)
+   ========================================================================== */
+.bte-nav-bar {
+  display: flex;
+  height: 80px;
+  background-color: var(--md-sys-color-surface-container);
+  border-block-start: 1px solid var(--md-sys-color-outline-variant);
+  width: 100%;
+  position: sticky;
+  inset-block-end: 0;
+  inset-inline: 0;
+  z-index: 100;
+  justify-content: space-around;
+  align-items: center;
+  padding-block: 0;
+  padding-inline: var(--md-sys-spacing-2, 8px);
+  box-sizing: border-box;
+}
+
+.bte-nav-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-width: 48px;
+  height: 100%;
+  flex: 1;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--md-sys-color-on-surface-variant);
+  padding-block: var(--md-sys-spacing-2, 8px);
+  padding-inline: 0;
+  gap: var(--md-sys-spacing-1, 4px);
+  position: relative;
+  transition: color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.bte-nav-bar__icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 32px;
+  border-radius: var(--md-sys-shape-corner-large);
+  position: relative;
+  transition: background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.bte-nav-bar__label {
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  line-height: var(--md-sys-typescale-label-medium-line-height);
+  letter-spacing: var(--md-sys-typescale-label-medium-tracking);
+}
+
+.bte-nav-bar__item--active {
+  color: var(--md-sys-color-on-surface);
+}
+
+.bte-nav-bar__item--active .bte-nav-bar__icon-container {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+/* ==========================================================================
+   Navigation Rail (Medium screens: 600px - 839px)
+   ========================================================================== */
+.bte-nav-rail {
+  display: none;
+  width: 80px;
+  min-width: 80px;
+  background-color: var(--md-sys-color-surface);
+  border-inline-end: 1px solid var(--md-sys-color-outline-variant);
+  height: 100vh;
+  position: sticky;
+  inset-block-start: 0;
+  flex-direction: column;
+  align-items: center;
+  padding-block: var(--md-sys-spacing-4, 16px);
+  padding-inline: 0;
+  box-sizing: border-box;
+  z-index: 100;
+  gap: var(--md-sys-spacing-3, 12px);
+}
+
+.bte-nav-rail__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block-end: var(--md-sys-spacing-6, 24px);
+  gap: var(--md-sys-spacing-4, 16px);
+}
+
+.bte-nav-rail__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  min-height: 56px;
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--md-sys-color-on-surface-variant);
+  gap: var(--md-sys-spacing-1, 4px);
+  transition: color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.bte-nav-rail__icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 32px;
+  border-radius: var(--md-sys-shape-corner-large);
+  transition: background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.bte-nav-rail__item--active {
+  color: var(--md-sys-color-on-surface);
+}
+
+.bte-nav-rail__item--active .bte-nav-rail__icon-container {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+/* ==========================================================================
+   Navigation Drawer (Expanded screens: >= 840px)
+   ========================================================================== */
+.bte-nav-drawer {
+  display: none;
+  width: 280px;
+  min-width: 280px;
+  background-color: var(--md-sys-color-surface-container-low);
+  border-inline-end: 1px solid var(--md-sys-color-outline-variant);
+  height: 100vh;
+  position: sticky;
+  inset-block-start: 0;
+  flex-direction: column;
+  padding-block: var(--md-sys-spacing-6, 24px);
+  padding-inline: var(--md-sys-spacing-3, 12px);
+  box-sizing: border-box;
+  z-index: 100;
+  gap: var(--md-sys-spacing-1, 4px);
+}
+
+.bte-nav-drawer__title {
+  font-family: var(--md-sys-typescale-title-small-font);
+  font-size: var(--md-sys-typescale-title-small-size);
+  font-weight: var(--md-sys-typescale-title-small-weight);
+  color: var(--md-sys-color-on-surface-variant);
+  padding: var(--md-sys-spacing-4, 16px);
+}
+
+.bte-nav-drawer__item {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-3, 12px);
+  min-height: 56px;
+  padding-block: 0;
+  padding-inline: var(--md-sys-spacing-4, 16px);
+  border-radius: var(--md-sys-shape-corner-full);
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  transition: background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+              color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.bte-nav-drawer__item:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+.bte-nav-drawer__item--active {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+/* Responsive Display Toggling based on Window Size Classes */
+@media (min-width: 600px) and (max-width: 839px) {
+  .bte-nav-bar { display: none; }
+  .bte-nav-rail { display: flex; }
+  .bte-nav-drawer { display: none; }
+}
+
+@media (min-width: 840px) {
+  .bte-nav-bar { display: none; }
+  .bte-nav-rail { display: none; }
+  .bte-nav-drawer { display: flex; }
+}

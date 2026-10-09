@@ -1,0 +1,49 @@
+/**
+ * M3 Spec-Compliant Top App Bar Component
+ * Reference: https://m3.material.io/components/top-app-bar/overview
+ */
+
+.bte-top-app-bar {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding-block: 0;
+  padding-inline: var(--md-sys-spacing-4, 16px);
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 90;
+  gap: var(--md-sys-spacing-4, 16px);
+  box-sizing: border-box;
+  transition: background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+              box-shadow var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.bte-top-app-bar--scrolled {
+  background-color: var(--md-sys-color-surface-container);
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+.bte-top-app-bar__nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bte-top-app-bar__title {
+  flex: 1;
+  font-family: var(--md-sys-typescale-title-large-font);
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bte-top-app-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-2, 8px);
+}

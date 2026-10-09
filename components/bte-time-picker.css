@@ -1,0 +1,141 @@
+/**
+ * M3 Spec-Compliant Time Picker Component
+ * Reference: https://m3.material.io/components/time-pickers/overview
+ */
+
+.bte-time-picker {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 328px;
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  box-shadow: var(--md-sys-elevation-level3);
+  padding: var(--md-sys-spacing-6, 24px);
+  box-sizing: border-box;
+}
+
+.bte-time-picker__title {
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  color: var(--md-sys-color-on-surface-variant);
+  margin-block-end: var(--md-sys-spacing-4, 16px);
+}
+
+/* Time Input Inputs Row */
+.bte-time-picker__display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--md-sys-spacing-3, 12px);
+  margin-block-end: var(--md-sys-spacing-6, 24px);
+}
+
+.bte-time-picker__time-cell {
+  width: 96px;
+  height: 80px;
+  border-radius: var(--md-sys-shape-corner-small);
+  background-color: var(--md-sys-color-surface-container-highest);
+  color: var(--md-sys-color-on-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--md-sys-typescale-display-large-font);
+  font-size: 48px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--md-sys-motion-duration-short2) var(--md-sys-motion-easing-standard);
+}
+
+.bte-time-picker__time-cell--selected {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  border-color: var(--md-sys-color-primary);
+}
+
+.bte-time-picker__separator {
+  font-family: var(--md-sys-typescale-display-large-font);
+  font-size: 48px;
+  line-height: 1;
+}
+
+/* AM / PM Toggle */
+.bte-time-picker__period-toggle {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  overflow: hidden;
+  height: 80px;
+}
+
+.bte-time-picker__period-btn {
+  flex: 1;
+  width: 52px;
+  border: none;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--md-sys-motion-duration-short2) var(--md-sys-motion-easing-standard);
+}
+
+.bte-time-picker__period-btn--selected {
+  background-color: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+}
+
+/* Dial Clock Face */
+.bte-time-picker__dial {
+  position: relative;
+  width: 256px;
+  height: 256px;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-surface-container-highest);
+  margin-inline: auto;
+  margin-block-end: var(--md-sys-spacing-5, 20px);
+}
+
+.bte-time-picker__dial-number {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--md-sys-shape-corner-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  color: var(--md-sys-color-on-surface);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.bte-time-picker__dial-number--selected {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.bte-time-picker__dial-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-primary);
+  transform: translate(-50%, -50%);
+}
+
+.bte-time-picker__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-start: var(--md-sys-spacing-2, 8px);
+}

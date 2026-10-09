@@ -1,0 +1,64 @@
+/**
+ * M3 Spec-Compliant Segmented Button Component
+ * Reference: https://m3.material.io/components/segmented-buttons/overview
+ */
+
+.bte-segmented-button-set {
+  display: inline-flex;
+  border-radius: var(--md-sys-shape-corner-full);
+  border: 1px solid var(--md-sys-color-outline);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.bte-segmented-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-height: 40px;
+  padding-block: 0;
+  padding-inline: var(--md-sys-spacing-4, 16px);
+  background: transparent;
+  border: none;
+  border-inline-end: 1px solid var(--md-sys-color-outline);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  cursor: pointer;
+  gap: var(--md-sys-spacing-2, 8px);
+  position: relative;
+  transition: background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+              color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+  outline: none;
+}
+
+.bte-segmented-button:last-child {
+  border-inline-end: none;
+}
+
+.bte-segmented-button:hover:not([disabled]) {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+.bte-segmented-button:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.bte-segmented-button--selected {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.bte-segmented-button--selected:hover:not([disabled]) {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-secondary-container) calc(var(--md-sys-state-hover-state-layer-opacity) * 100%), var(--md-sys-color-secondary-container));
+}
+
+.bte-segmented-button[disabled] {
+  opacity: 0.38;
+  cursor: not-allowed;
+  pointer-events: none;
+}
