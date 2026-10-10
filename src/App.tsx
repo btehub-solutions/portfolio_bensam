@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import AudioNarrationPlayer from "./AudioNarrationPlayer";
 import {
   ArrowLeft,
   ArrowRight,
@@ -89,7 +88,7 @@ const PROJECTS = [
     tags: "TensorFlow · OpenCV · MediaPipe · MobileNetV2",
     date: "August 2025",
     desc: "Real-time driver monitoring system for drowsiness and distraction detection using computer vision and deep learning.",
-    img: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    img: "/alertdrive-showcase.jpg?v=3",
     github: "https://github.com/btehub-solutions/AlertDrive_AI.git",
   },
   {
@@ -120,7 +119,25 @@ const PROJECTS = [
     live: "http://vibeaihub.vercel.app/",
     github: "https://github.com/btehub-solutions/vibeai-frontend",
   },
+  {
+    title: "AI-Driven Ethical Hacking Agent Suite",
+    category: "AI Security & Ethical Hacking",
+    tags: "Gemini API · Python · Kali Linux · Nmap · Metasploit · Exploit-DB",
+    date: "April 2026",
+    desc: "Built an 8-module program of autonomous AI agents that perform real penetration-testing work end to end, reasoning over live tool output and making their own decisions, rather than a human operating tools manually with AI bolted on. Architecture follows the “agentic pentesting” pattern, an LLM orchestration layer (Gemini API) with tool-calling access to real security tooling on Kali Linux. Capabilities include: a reconnaissance agent that autonomously chains OSINT tools (whois, subdomain enumeration, email harvesting) and decides its own investigation path; a scanning agent that runs live Nmap service-detection scans and triages findings by real risk rather than listing everything; a vulnerability analysis agent that cross-references detected services against Exploit-DB to separate “looks outdated” from “has a confirmed public exploit”; an exploitation agent that identifies and runs Metasploit modules against known vulnerabilities, reasoning through success or failure; an AI red-teaming agent that tests other AI systems for prompt injection and jailbreak vulnerabilities; a built-in guardrails layer enforcing scope limits and authorization checks across every agent; and a full autonomous engagement capstone chaining recon through final reporting against a dedicated vulnerable target end to end. Tested against authorized practice infrastructure and my own live domain, trax.ng, where the recon and scan agents identified a real production security gap, HTTPS traffic bypassing the CDN security layer and hitting the origin server directly.",
+    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    live: "https://www.trax.ng/",
+    github: "https://github.com/btehub-solutions",
+  },
 ];
+
+// Flagship featured projects displayed on the Home page (prevents crowding)
+const HOME_PROJECTS = PROJECTS.filter(
+  (p) =>
+    !["CoreAI Monorepo", "TaxNaija", "VibeAI Hub", "AI-Driven Ethical Hacking Agent Suite"].includes(
+      p.title
+    )
+);
 
 const CERTS = [
   {
@@ -206,6 +223,27 @@ const COMMUNITY_ITEMS = [
 
 const SKILL_CATEGORIES = [
   {
+    id: "sec",
+    label: "AI Security & Ethical Hacking",
+    color: "bg-red-500 text-white",
+    shape: "rounded-xl",
+    skills: [
+      "Gemini API",
+      "Kali Linux",
+      "Nmap",
+      "Metasploit",
+      "Agentic AI",
+      "OSINT",
+      "Exploit-DB",
+      "Tool-Calling / Function-Calling",
+      "Python Automation",
+      "CVE Analysis",
+      "Prompt Injection & LLM Red Teaming",
+      "Adversarial AI",
+      "AI Guardrails & Safety",
+    ],
+  },
+  {
     id: "ml",
     label: "Machine Learning & AI",
     color: "bg-orange-500 text-white",
@@ -254,6 +292,7 @@ const ALL_TECH = [
   "FastAPI", "Next.js", "Docker", "Kubernetes", "AWS SageMaker", "MLflow",
   "OpenCV", "MediaPipe", "PostgreSQL", "Pinecone", "Kafka", "Redis",
   "Pandas", "NumPy", "React", "TypeScript", "GraphQL", "ChromaDB",
+  "Kali Linux", "Nmap", "Metasploit", "Gemini API", "Exploit-DB", "Agentic AI", "OSINT",
 ];
 
 const EXPERIENCE = [
@@ -296,8 +335,8 @@ const EXPERIENCE = [
 ];
 
 const STATS = [
-  { value: "5+",  label: "Clients\nServed",       id: "clients" },
-  { value: "15+", label: "Projects\nCompleted",   id: "projects" },
+  { value: "50+", label: "Clients\nServed",       id: "clients" },
+  { value: "100+", label: "Projects\nCompleted",   id: "projects" },
   { value: "5+",  label: "Years\nExperience",     id: "years" },
   { value: "10+", label: "ML Models\nDeployed",   id: "models" },
 ];
@@ -451,6 +490,15 @@ function Testimonials() {
 }
 
 function ContactCTA({ onOpenContact }: { onOpenContact?: () => void }) {
+  const handleScrollToFooter = () => {
+    const footerElement = document.getElementById("footer");
+    if (footerElement) {
+      footerElement.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -522,11 +570,11 @@ function ContactCTA({ onOpenContact }: { onOpenContact?: () => void }) {
 
             {/* Solid 90-degree Square Black Button */}
             <button
-              onClick={onOpenContact}
+              onClick={handleScrollToFooter}
               className="bg-black hover:bg-neutral-900 text-white font-bold text-xs sm:text-sm md:text-base px-7 sm:px-9 py-2.5 sm:py-3 rounded-none shadow-2xl hover:scale-105 active:scale-95 transition-all inline-block cursor-pointer tracking-wide"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              Get in touch
+              Get started ↓
             </button>
           </div>
 
@@ -547,7 +595,7 @@ function ContactCTA({ onOpenContact }: { onOpenContact?: () => void }) {
 
 function Footer() {
   return (
-    <div className="w-full px-2 sm:px-2.5 pb-2.5">
+    <div id="footer" className="w-full px-2 sm:px-2.5 pb-2.5">
       <footer
         className="film-grain relative w-full rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10"
         style={{ paddingTop: "48px", paddingBottom: "40px" }}
@@ -768,7 +816,7 @@ function Certifications() {
               </h2>
             </div>
             <a
-              href="https://linkedin.com/in/ben-sam-oladoyin-527966233"
+              href="https://drive.google.com/drive/folders/16W-Gx5xHapQaPfgfOLFDlNvE8oFrfzke?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border-2 border-black text-black text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full hover:bg-black hover:text-white transition-all self-start sm:self-auto shadow-sm"
@@ -779,15 +827,15 @@ function Certifications() {
           </div>
         </div>
 
-        {/* 2-Column Grid on Mobile AND Desktop (Compact & High Information Density) */}
-        <div className="grid grid-cols-2 relative z-10">
+        {/* 1-Column Grid on Mobile, 2-Column on Tablets/Desktop (Prevents cramped mobile cards) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 relative z-10 divide-y sm:divide-y-0 divide-black/15">
           {CERTS.map((cert, i) => (
             <div
               key={cert.id}
-              className={`flex flex-col justify-between p-3.5 sm:p-6 md:p-10 ${
-                i % 2 === 0 ? "border-r border-black/15" : ""
+              className={`flex flex-col justify-between p-5 sm:p-6 md:p-10 ${
+                i % 2 === 0 ? "sm:border-r border-black/15" : ""
               } ${
-                i < 2 ? "border-b border-black/15" : ""
+                i < 2 ? "sm:border-b border-black/15" : ""
               } hover:bg-black/[0.02] transition-colors`}
             >
               {/* Category & Year */}
@@ -1084,10 +1132,6 @@ function About({ onOpenCV }: { onOpenCV?: () => void }) {
           >
             About<br />Me.
           </h2>
-          <span className="inline-flex items-center gap-2 border border-emerald-400/80 bg-emerald-950/40 text-emerald-400 text-[11px] sm:text-xs font-semibold px-3.5 py-1.5 rounded-full tracking-widest uppercase mb-1 self-start md:self-auto">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block" />
-            Available for Full-Time Roles
-          </span>
         </div>
 
         {/* 2-Column Responsive Content */}
@@ -1382,23 +1426,23 @@ function FeaturedSpotlight() {
             </div>
 
             {/* Interactive Prev/Next Navigation & Indicator Dots */}
-            <div className="flex items-center gap-3 mt-1">
+            <div className="flex items-center gap-3.5 mt-2">
               <button
                 onClick={handlePrev}
                 aria-label="Previous startup"
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white text-xs flex items-center justify-center transition-all cursor-pointer border border-white/10"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer border border-white/15 shadow-md"
               >
-                <CaretLeft size={14} weight="bold" />
+                <CaretLeft size={18} weight="bold" />
               </button>
 
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2">
                 {FEATURED_SLIDES.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentSlide(idx)}
                     aria-label={`Go to slide ${idx + 1}`}
-                    className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      currentSlide === idx ? "w-6 sm:w-7 bg-white" : "w-1.5 sm:w-2 bg-white/30 hover:bg-white/60"
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      currentSlide === idx ? "w-6 sm:w-7 bg-white" : "w-2 bg-white/30 hover:bg-white/60"
                     }`}
                   />
                 ))}
@@ -1407,9 +1451,9 @@ function FeaturedSpotlight() {
               <button
                 onClick={handleNext}
                 aria-label="Next startup"
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white text-xs flex items-center justify-center transition-all cursor-pointer border border-white/10"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer border border-white/15 shadow-md"
               >
-                <CaretRight size={14} weight="bold" />
+                <CaretRight size={18} weight="bold" />
               </button>
             </div>
           </div>
@@ -1453,9 +1497,9 @@ function ProjectCard({ project, isFirst }: { project: typeof PROJECTS[0]; isFirs
           </p>
         </div>
 
-        {/* Compact Arrow Indicator */}
-        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 group-hover:bg-white text-white group-hover:text-black flex items-center justify-center font-bold text-xs transition-all duration-300 backdrop-blur-md shrink-0">
-          <ArrowUpRight size={14} weight="bold" />
+        {/* Responsive Touch-Friendly Arrow Indicator */}
+        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/15 group-hover:bg-white text-white group-hover:text-black flex items-center justify-center font-bold transition-all duration-300 backdrop-blur-md shrink-0 shadow-md">
+          <ArrowUpRight size={18} weight="bold" />
         </div>
       </div>
     </a>
@@ -1468,7 +1512,7 @@ function Projects({ onNavigateToProjects }: { onNavigateToProjects?: () => void 
       {/* 2-Column Framed Project Grid matching the reference layout */}
       <div className="w-full px-2 sm:px-2.5 pb-2 sm:pb-2.5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5">
-          {PROJECTS.map((project, idx) => (
+          {HOME_PROJECTS.map((project, idx) => (
             <ProjectCard key={project.title} project={project} isFirst={idx === 0} />
           ))}
         </div>
@@ -1562,9 +1606,9 @@ function QuickConnectModal({
           <button
             onClick={onClose}
             aria-label="Close modal"
-            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
           >
-            <X size={16} weight="bold" />
+            <X size={18} weight="bold" />
           </button>
         </div>
 
@@ -1573,8 +1617,8 @@ function QuickConnectModal({
           {/* Email Channel */}
           <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-white/25 transition-all">
             <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-lg bg-[#FF4800]/20 text-[#FF4800] flex items-center justify-center text-lg shrink-0 font-bold">
-                <EnvelopeSimple size={20} weight="fill" />
+              <div className="w-11 h-11 rounded-lg bg-[#FF4800]/20 text-[#FF4800] flex items-center justify-center text-xl shrink-0 font-bold">
+                <EnvelopeSimple size={22} weight="fill" />
               </div>
               <div>
                 <p
@@ -1592,28 +1636,28 @@ function QuickConnectModal({
             <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={handleCopyEmail}
-                className="px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-xs font-semibold transition-all cursor-pointer inline-flex items-center gap-1.5"
+                className="px-3.5 py-2 rounded-md bg-white/10 hover:bg-white/20 text-xs font-semibold transition-all cursor-pointer inline-flex items-center gap-1.5 active:scale-95"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 {copiedEmail ? (
                   <>
-                    <Check size={13} weight="bold" className="text-emerald-400" />
+                    <Check size={15} weight="bold" className="text-emerald-400" />
                     <span>Copied</span>
                   </>
                 ) : (
                   <>
-                    <Copy size={13} weight="bold" />
+                    <Copy size={15} weight="bold" />
                     <span>Copy</span>
                   </>
                 )}
               </button>
               <a
                 href="mailto:bensamoladoyin1@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20Ben%20Sam%20Oladoyin&body=Hi%20Ben%20Sam%2C%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project..."
-                className="px-4 py-1.5 rounded-md bg-[#FF4800] hover:brightness-110 text-black font-bold text-xs transition-all flex items-center gap-1 cursor-pointer"
+                className="px-4 py-2 rounded-md bg-[#FF4800] hover:brightness-110 text-black font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer active:scale-95"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 <span>Compose</span>
-                <ArrowUpRight size={13} weight="bold" />
+                <ArrowUpRight size={15} weight="bold" />
               </a>
             </div>
           </div>
@@ -1621,8 +1665,8 @@ function QuickConnectModal({
           {/* WhatsApp Channel */}
           <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-white/25 transition-all">
             <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-lg bg-[#22C55E]/20 text-[#22C55E] flex items-center justify-center text-lg shrink-0 font-bold">
-                <WhatsappLogo size={22} weight="fill" />
+              <div className="w-11 h-11 rounded-lg bg-[#22C55E]/20 text-[#22C55E] flex items-center justify-center text-xl shrink-0 font-bold">
+                <WhatsappLogo size={24} weight="fill" />
               </div>
               <div>
                 <p
@@ -1640,17 +1684,17 @@ function QuickConnectModal({
             <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={handleCopyPhone}
-                className="px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-xs font-semibold transition-all cursor-pointer inline-flex items-center gap-1.5"
+                className="px-3.5 py-2 rounded-md bg-white/10 hover:bg-white/20 text-xs font-semibold transition-all cursor-pointer inline-flex items-center gap-1.5 active:scale-95"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 {copiedPhone ? (
                   <>
-                    <Check size={13} weight="bold" className="text-emerald-400" />
+                    <Check size={15} weight="bold" className="text-emerald-400" />
                     <span>Copied</span>
                   </>
                 ) : (
                   <>
-                    <Copy size={13} weight="bold" />
+                    <Copy size={15} weight="bold" />
                     <span>Copy</span>
                   </>
                 )}
@@ -1659,11 +1703,11 @@ function QuickConnectModal({
                 href="https://wa.me/2347045422815?text=Hi%20Ben%20Sam%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-1.5 rounded-md bg-[#22C55E] hover:brightness-110 text-black font-bold text-xs transition-all flex items-center gap-1 cursor-pointer"
+                className="px-4 py-2 rounded-md bg-[#22C55E] hover:brightness-110 text-black font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer active:scale-95"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 <span>Chat</span>
-                <ArrowUpRight size={13} weight="bold" />
+                <ArrowUpRight size={15} weight="bold" />
               </a>
             </div>
           </div>
@@ -1745,7 +1789,8 @@ function CVModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) 
             </a>
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+              aria-label="Close CV modal"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer text-base"
             >
               ✕
             </button>
@@ -1866,7 +1911,7 @@ function ProjectsArchivePage({
     <div className="min-h-screen bg-black text-white film-grain">
       {/* Unframed Full-Bleed Projects Hero */}
       <section
-        className="film-grain relative w-full min-h-[460px] sm:min-h-[520px] md:min-h-[580px] bg-black flex flex-col justify-between p-5 sm:p-7 md:p-10 select-none pb-8"
+        className="film-grain relative w-full min-h-[460px] sm:min-h-[520px] md:min-h-[580px] bg-black flex flex-col justify-between pt-16 sm:pt-20 px-5 sm:px-7 md:px-10 select-none pb-8"
       >
         {/* Top Shared Navbar with Project Active Highlight */}
         <Navbar
@@ -1961,15 +2006,15 @@ function Navbar({
       className={
         embedded
           ? "relative w-full flex items-center justify-between pointer-events-auto"
-          : `fixed left-0 right-0 z-50 px-3 sm:px-4 md:px-6 flex items-center justify-between pointer-events-none transition-all duration-300 ${
-              scrolled ? "top-2.5 sm:top-3.5" : "top-3 sm:top-4"
+          : `fixed left-0 right-0 z-50 px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-center sm:justify-between pointer-events-none transition-all duration-300 ${
+              scrolled ? "top-2 sm:top-3.5" : "top-2.5 sm:top-4"
             }`
       }
     >
-      {/* Brand Badge */}
+      {/* Brand Badge (hidden on mobile, visible on desktop/tablet) */}
       <button
         onClick={onNavigateHome}
-        className="flex w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-white items-center justify-center shrink-0 shadow-2xl hover:scale-105 active:scale-95 transition-transform pointer-events-auto cursor-pointer"
+        className="hidden sm:flex w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-white items-center justify-center shrink-0 shadow-2xl hover:scale-105 active:scale-95 transition-transform pointer-events-auto cursor-pointer"
         title="Ben Sam Portfolio"
       >
         <span
@@ -1980,8 +2025,8 @@ function Navbar({
         </span>
       </button>
 
-      {/* Mobile row: vertically and horizontally centered */}
-      <div className="flex sm:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-1.5 pointer-events-auto">
+      {/* Mobile row: exactly matching the original signature design (Square Home, Pill Project, Rounded-lg CV) with clean alignment */}
+      <div className="flex sm:hidden items-center justify-center gap-1.5 pointer-events-auto">
         <button
           onClick={onNavigateHome}
           className="h-10 px-3.5 bg-[#FF4800] text-black font-bold text-xs rounded-none shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
@@ -2032,9 +2077,9 @@ function Navbar({
 
       {/* Right side action or spacer */}
       {rightAction ? (
-        <div className="flex items-center shrink-0 pointer-events-auto">{rightAction}</div>
+        <div className="hidden sm:flex items-center shrink-0 pointer-events-auto">{rightAction}</div>
       ) : (
-        <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 shrink-0 pointer-events-none" />
+        <div className="hidden sm:block sm:w-11 sm:h-11 md:w-12 md:h-12 shrink-0 pointer-events-none" />
       )}
     </nav>
   );
@@ -2520,7 +2565,7 @@ function CVPage({
                   </div>
 
                   <a
-                    href="https://linkedin.com/in/ben-sam-oladoyin-527966233"
+                    href="https://drive.google.com/drive/folders/16W-Gx5xHapQaPfgfOLFDlNvE8oFrfzke?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-center py-2 text-white/50 hover:text-white text-xs underline font-mono"
@@ -2670,9 +2715,6 @@ export default function App() {
         isOpen={contactModalOpen}
         onClose={() => setContactModalOpen(false)}
       />
-
-      {/* Floating Persistent Audio Narration Player */}
-      <AudioNarrationPlayer />
     </>
   );
 }
