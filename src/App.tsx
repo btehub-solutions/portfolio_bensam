@@ -5,6 +5,7 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
+  Article,
   CaretLeft,
   CaretRight,
   Check,
@@ -18,6 +19,7 @@ import {
   LinkedinLogo,
   MapPin,
   Phone,
+  Sparkle,
   WhatsappLogo,
   X,
 } from "@phosphor-icons/react";
@@ -27,18 +29,29 @@ const NAV_LINKS = [
   { label: "About",      href: "#about",      color: "bg-emerald-400 text-black",  shape: "rounded-full" },
   { label: "Skills",     href: "#skills",     color: "bg-slate-300 text-black",    shape: "rounded-lg" },
   { label: "Projects",   href: "#projects",   color: "bg-violet-400 text-black",   shape: "rounded-full" },
+  { label: "Blog",       href: "#blog",       color: "bg-[#FACC15] text-black",    shape: "rounded-2xl" },
   { label: "Experience", href: "#experience", color: "bg-yellow-300 text-black",   shape: "rounded-xl" },
-  { label: "Contact",    href: "#contact",    color: "bg-sky-300 text-black",      shape: "rounded-md" },
+  { label: "Contact",    href: "#contact",    color: "bg-[#C084FC] text-black",    shape: "rounded-tr-2xl rounded-bl-2xl" },
 ];
 
-const PROJECTS = [
+interface ProjectItem {
+  title: string;
+  category: string;
+  tags: string;
+  date?: string;
+  desc: string;
+  img?: string;
+  live?: string;
+  github?: string;
+}
+
+const PROJECTS: ProjectItem[] = [
   {
     title: "Trax (trax.ng)",
     category: "Media & Tech Platform",
     tags: "Next.js · Tailwind CSS · TypeScript · SEO · Ecosystem",
     date: "November 2025",
     desc: "Ogun State's tech news and startup media platform tracking the local technology movement, funding rounds, and builder ecosystem.",
-    img: "/trax-showcase.jpg",
     live: "https://www.trax.ng/",
     github: "https://github.com/btehub-solutions/Trax",
   },
@@ -48,7 +61,6 @@ const PROJECTS = [
     tags: "Next.js · Tailwind CSS · TypeScript · Talent Network",
     date: "October 2026",
     desc: "Curated African tech talent marketplace and jobs network connecting vetted software engineers, designers, and marketers with top startups.",
-    img: "/trax-jobs-showcase.jpg?v=2",
     live: "https://jobs.trax.ng/",
     github: "https://github.com/btehub-solutions/Trax",
   },
@@ -58,7 +70,6 @@ const PROJECTS = [
     tags: "Next.js · TypeScript · Brand Identity · Ecosystem Hub",
     date: "September 2026",
     desc: "The unified Trax portal connecting Trax Events, TraxMedia publication, and Trax Jobs into a cohesive African technology movement.",
-    img: "/trax-echo-showcase.jpg",
     live: "https://echo.trax.ng/",
     github: "https://github.com/btehub-solutions/Trax",
   },
@@ -68,7 +79,6 @@ const PROJECTS = [
     tags: "Next.js · TypeScript · FastAPI · AI/ML Pipelines",
     date: "January 2026",
     desc: "A premium AI engineering and automation platform featuring active pipelines, 94.7% optimized model accuracy, and autonomous workflows.",
-    img: "/btehub-solutions-showcase.jpg",
     live: "https://btehub.vercel.app/",
     github: "https://github.com/btehub-solutions",
   },
@@ -78,7 +88,6 @@ const PROJECTS = [
     tags: "Next.js · TypeScript · Tailwind · Course Platform",
     date: "February 2026",
     desc: "Premier hands-on AI academy offering cohort courses in Python for AI, Generative AI & LLMs, and Workflow Automation.",
-    img: "/btehub-academy-showcase.jpg",
     live: "https://btehubacademy.vercel.app/",
     github: "https://github.com/btehub-solutions",
   },
@@ -88,7 +97,6 @@ const PROJECTS = [
     tags: "TensorFlow · OpenCV · MediaPipe · MobileNetV2",
     date: "August 2025",
     desc: "Real-time driver monitoring system for drowsiness and distraction detection using computer vision and deep learning.",
-    img: "/alertdrive-showcase.jpg?v=3",
     github: "https://github.com/btehub-solutions/AlertDrive_AI.git",
   },
   {
@@ -97,7 +105,6 @@ const PROJECTS = [
     tags: "FastAPI · Gemini API · Claude · PostgreSQL",
     date: "October 2025",
     desc: "A production-ready AI automation monorepo combining Next.js with FastAPI, integrating Gemini and Claude for scalable workflows.",
-    img: "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
     github: "https://github.com/btehub-solutions/CoreAI",
   },
   {
@@ -106,7 +113,6 @@ const PROJECTS = [
     tags: "Python · Flask · Scikit-learn · Pandas · React",
     date: "May 2025",
     desc: "AI-powered tax classification and liability prediction platform for Nigerian employees and businesses.",
-    img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
     github: "https://github.com/btehub-solutions/TaxNaija.git",
   },
   {
@@ -115,7 +121,6 @@ const PROJECTS = [
     tags: "Next.js · TypeScript · Tailwind · OpenAI API",
     date: "March 2025",
     desc: "A next-gen AI learning platform designed for future-ready professionals with active AI-fluent prompt and agent pipelines.",
-    img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
     live: "http://vibeaihub.vercel.app/",
     github: "https://github.com/btehub-solutions/vibeai-frontend",
   },
@@ -125,19 +130,13 @@ const PROJECTS = [
     tags: "Gemini API · Python · Kali Linux · Nmap · Metasploit · Exploit-DB",
     date: "April 2026",
     desc: "Built an 8-module program of autonomous AI agents that perform real penetration-testing work end to end, reasoning over live tool output and making their own decisions, rather than a human operating tools manually with AI bolted on. Architecture follows the “agentic pentesting” pattern, an LLM orchestration layer (Gemini API) with tool-calling access to real security tooling on Kali Linux. Capabilities include: a reconnaissance agent that autonomously chains OSINT tools (whois, subdomain enumeration, email harvesting) and decides its own investigation path; a scanning agent that runs live Nmap service-detection scans and triages findings by real risk rather than listing everything; a vulnerability analysis agent that cross-references detected services against Exploit-DB to separate “looks outdated” from “has a confirmed public exploit”; an exploitation agent that identifies and runs Metasploit modules against known vulnerabilities, reasoning through success or failure; an AI red-teaming agent that tests other AI systems for prompt injection and jailbreak vulnerabilities; a built-in guardrails layer enforcing scope limits and authorization checks across every agent; and a full autonomous engagement capstone chaining recon through final reporting against a dedicated vulnerable target end to end. Tested against authorized practice infrastructure and my own live domain, trax.ng, where the recon and scan agents identified a real production security gap, HTTPS traffic bypassing the CDN security layer and hitting the origin server directly.",
-    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
     live: "https://www.trax.ng/",
     github: "https://github.com/btehub-solutions",
   },
 ];
 
-// Flagship featured projects displayed on the Home page (prevents crowding)
-const HOME_PROJECTS = PROJECTS.filter(
-  (p) =>
-    !["CoreAI Monorepo", "TaxNaija", "VibeAI Hub", "AI-Driven Ethical Hacking Agent Suite"].includes(
-      p.title
-    )
-);
+// Exactly 4 flagship featured projects displayed on the Home page (2x2 grid matching reference)
+const HOME_PROJECTS = PROJECTS.slice(0, 4);
 
 const CERTS = [
   {
@@ -1349,11 +1348,11 @@ function FeaturedSpotlight() {
               className="text-white font-black leading-none tracking-tight"
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(2.4rem, 8.5vw, 11rem)",
+                fontSize: "clamp(2.8rem, 9.5vw, 10rem)",
                 letterSpacing: "-0.04em",
               }}
             >
-              Founded<br />Startups
+              Startups
             </h2>
 
             {/* Slide Index Badge */}
@@ -1463,7 +1462,7 @@ function FeaturedSpotlight() {
   );
 }
 
-function ProjectCard({ project, isFirst }: { project: typeof PROJECTS[0]; isFirst?: boolean }) {
+function ProjectCard({ project, isFirst }: { project: ProjectItem; isFirst?: boolean }) {
   const targetUrl = project.live || project.github;
 
   return (
@@ -1471,36 +1470,40 @@ function ProjectCard({ project, isFirst }: { project: typeof PROJECTS[0]; isFirs
       href={targetUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative overflow-hidden rounded-xl md:rounded-2xl group cursor-pointer aspect-[16/10] bg-[#141414] border border-white/10 shadow-2xl block select-none"
+      className="relative overflow-hidden rounded-[14px] sm:rounded-[16px] group cursor-pointer w-full h-[520px] sm:h-[620px] md:h-[680px] lg:h-[720px] bg-[#141416] block select-none border border-white/[0.06] hover:border-white/15 transition-all duration-500"
     >
-      {/* Full-bleed Project Image */}
-      <img
-        src={project.img}
-        alt={project.title}
-        className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-      />
+      {/* Card Image Area - Blank until user adds real mockup */}
+      {project.img ? (
+        <img
+          src={project.img}
+          alt={project.title}
+          className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+        />
+      ) : (
+        /* Blank Canvas - 100% clean and pristine, ready for mockup */
+        <div className="w-full h-full bg-[#141416] group-hover:bg-[#18181b] transition-colors duration-500" />
+      )}
 
-      {/* Slim, Low-Profile Frosted Overlay - Preserves original design system with minimal height */}
-      <div className="absolute bottom-0 left-0 right-0 pt-3 pb-2.5 sm:pb-3 px-4 sm:px-6 bg-gradient-to-t from-black/85 via-black/45 to-transparent backdrop-blur-[2px] flex items-center justify-between transition-all duration-300 z-10">
-        <div className="flex-1 pr-3 min-w-0">
-          <h3
-            className="text-white font-semibold text-sm sm:text-base md:text-lg tracking-tight leading-tight truncate drop-shadow-md"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            {project.title}
-          </h3>
-          <p
-            className="text-white/75 text-[11px] sm:text-xs font-medium mt-0.5 truncate tracking-normal drop-shadow"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            {project.category} · {project.date || project.tags}
-          </p>
-        </div>
-
-        {/* Responsive Touch-Friendly Arrow Indicator */}
-        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/15 group-hover:bg-white text-white group-hover:text-black flex items-center justify-center font-bold transition-all duration-300 backdrop-blur-md shrink-0 shadow-md">
-          <ArrowUpRight size={18} weight="bold" />
-        </div>
+      {/* 100% Floating Frosted Text Box - Exact match to reference screenshot */}
+      <div
+        className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-3 sm:left-3 sm:right-3 md:bottom-3.5 md:left-3.5 md:right-3.5 rounded-[8px] sm:rounded-[10px] bg-black/35 backdrop-blur-[24px] border border-white/10 flex flex-col justify-end px-4 py-3 sm:px-5 sm:py-3.5 md:px-5 md:py-4 z-10 transition-all duration-300 group-hover:bg-black/50 group-hover:border-white/15 shadow-lg select-none"
+        style={{
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+        }}
+      >
+        <h3
+          className="text-[#FFFFFF] font-semibold text-[15px] sm:text-[16px] md:text-[17px] tracking-[-0.015em] leading-[1.3] truncate"
+          style={{ fontFamily: "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
+        >
+          {project.title}
+        </h3>
+        <p
+          className="text-white/75 font-normal text-[13px] sm:text-[14px] tracking-[-0.01em] leading-normal mt-0.5 truncate"
+          style={{ fontFamily: "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
+        >
+          {project.category} · {project.date || project.tags}
+        </p>
       </div>
     </a>
   );
@@ -1570,21 +1573,18 @@ function QuickConnectModal({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-fadeIn select-none"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-2.5 sm:p-6 bg-black/85 backdrop-blur-md animate-fadeIn select-none"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-lg bg-[#0c0d12] border border-white/20 rounded-2xl shadow-2xl overflow-hidden p-6 sm:p-8 text-white"
+        className="relative w-full max-w-lg bg-[#0c0d12] border border-white/20 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden p-5 sm:p-8 text-white max-h-[92vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between pb-5 border-b border-white/10 mb-6">
+        <div className="flex items-center justify-between pb-4 sm:pb-5 border-b border-white/10 mb-5 sm:mb-6">
           <div className="flex items-center gap-3">
-            <div
-              className="w-10 h-10 rounded-full bg-white text-black font-extrabold flex items-center justify-center text-xs tracking-wider shrink-0"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              B·S
+            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
+              <BrandLogo size="sm" showText={false} />
             </div>
             <div>
               <h3
@@ -1759,38 +1759,38 @@ function CVModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-fadeIn">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-2.5 sm:p-6 bg-black/80 backdrop-blur-md animate-fadeIn">
       <div
-        className="relative w-full max-w-3xl max-h-[90vh] bg-[#141414] border border-white/20 rounded-2xl shadow-2xl overflow-hidden flex flex-col text-white"
+        className="relative w-full max-w-3xl max-h-[92vh] bg-[#141414] border border-white/20 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col text-white"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-[#1a1a1a]">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-white text-black font-bold flex items-center justify-center text-xs tracking-wider">
-              B·S
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-5 border-b border-white/10 bg-[#1a1a1a]">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
+              <BrandLogo size="sm" showText={false} />
             </div>
             <div>
-              <h3 className="font-bold text-lg leading-tight" style={{ fontFamily: "var(--font-display)" }}>
-                Ben Sam Oladoyin · Curriculum Vitae
+              <h3 className="font-bold text-sm sm:text-lg leading-tight" style={{ fontFamily: "var(--font-display)" }}>
+                Curriculum Vitae
               </h3>
-              <p className="text-white/60 text-xs" style={{ fontFamily: "var(--font-body)" }}>
-                AI &amp; Machine Learning Engineer · Founder
+              <p className="text-white/60 text-[11px] sm:text-xs" style={{ fontFamily: "var(--font-body)" }}>
+                Ben Sam Oladoyin · AI &amp; ML Engineer
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="mailto:bensamoladoyin1@gmail.com"
-              className="bg-[#22C55E] text-black font-bold text-xs px-4 py-2 rounded-full hover:brightness-110 transition-all"
+              className="bg-[#22C55E] text-black font-bold text-[11px] sm:text-xs px-3 sm:px-4 py-1.5 sm:py-2 rounded-full hover:brightness-110 transition-all"
             >
               Contact Me ✉
             </a>
             <button
               onClick={onClose}
               aria-label="Close CV modal"
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer text-base"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer text-sm sm:text-base"
             >
               ✕
             </button>
@@ -1798,7 +1798,7 @@ function CVModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) 
         </div>
 
         {/* Modal Body */}
-        <div className="overflow-y-auto p-6 md:p-8 space-y-6 text-sm" style={{ fontFamily: "var(--font-body)" }}>
+        <div className="overflow-y-auto p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 text-xs sm:text-sm" style={{ fontFamily: "var(--font-body)" }}>
           {/* Summary */}
           <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10">
             <h4 className="text-xs uppercase tracking-widest text-[#93C5FD] font-bold mb-2">
@@ -1902,10 +1902,14 @@ function CVModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) 
 
 function ProjectsArchivePage({
   onNavigateHome,
+  onNavigateBlog,
   onOpenCV,
+  onNavigateContact,
 }: {
   onNavigateHome: () => void;
+  onNavigateBlog?: () => void;
   onOpenCV: () => void;
+  onNavigateContact?: () => void;
 }) {
   return (
     <div className="min-h-screen bg-black text-white film-grain">
@@ -1918,7 +1922,9 @@ function ProjectsArchivePage({
           activeView="projects"
           onNavigateHome={onNavigateHome}
           onNavigateProjects={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onNavigateBlog={onNavigateBlog}
           onOpenCV={onOpenCV}
+          onNavigateContact={onNavigateContact}
         />
 
         {/* Centered Massive Display Title: "Projects" */}
@@ -1927,7 +1933,7 @@ function ProjectsArchivePage({
             className="text-white font-extrabold tracking-tight leading-none"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(5.5rem, 16vw, 17rem)",
+              fontSize: "clamp(3.4rem, 15vw, 17rem)",
               letterSpacing: "-0.04em",
             }}
           >
@@ -1974,18 +1980,241 @@ function ProjectsArchivePage({
   );
 }
 
+function BlogPage({
+  onNavigateHome,
+  onNavigateProjects,
+  onOpenCV,
+  onOpenContact,
+  onNavigateContact,
+}: {
+  onNavigateHome: () => void;
+  onNavigateProjects: () => void;
+  onOpenCV: () => void;
+  onOpenContact?: () => void;
+  onNavigateContact?: () => void;
+}) {
+  return (
+    <div className="min-h-screen bg-black text-white film-grain selection:bg-[#FACC15] selection:text-black">
+      {/* Unframed Full-Bleed Blog Hero */}
+      <section
+        className="film-grain relative w-full min-h-[460px] sm:min-h-[520px] md:min-h-[580px] bg-black flex flex-col justify-between pt-16 sm:pt-20 px-5 sm:px-7 md:px-10 select-none pb-8"
+      >
+        {/* Top Shared Navbar with Blog Active Highlight */}
+        <Navbar
+          activeView="blog"
+          onNavigateHome={onNavigateHome}
+          onNavigateProjects={onNavigateProjects}
+          onNavigateBlog={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onOpenCV={onOpenCV}
+          onNavigateContact={onNavigateContact}
+        />
+
+        {/* Centered Massive Display Title: "Blog" */}
+        <div className="relative z-10 text-center my-auto py-12 md:py-16 select-none" style={{ lineHeight: 0.82 }}>
+          <h1
+            className="text-white font-extrabold tracking-tight leading-none"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(3.4rem, 15vw, 17rem)",
+              letterSpacing: "-0.04em",
+            }}
+          >
+            Blog
+          </h1>
+        </div>
+
+        <div className="relative z-10 pb-1" />
+      </section>
+
+      {/* Blank Pure Black Staging Canvas (Ready for user to curate content) */}
+      <section className="w-full min-h-[300px] sm:min-h-[420px] bg-black film-grain" />
+
+      {/* CTA Ticket Banner */}
+      <ContactCTA onOpenContact={onOpenContact} />
+
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
+}
+
+function ContactPage({
+  onNavigateHome,
+  onNavigateProjects,
+  onNavigateBlog,
+  onOpenCV,
+  onOpenContact,
+}: {
+  onNavigateHome: () => void;
+  onNavigateProjects: () => void;
+  onNavigateBlog?: () => void;
+  onOpenCV: () => void;
+  onOpenContact?: () => void;
+}) {
+  return (
+    <div className="min-h-screen bg-black text-white film-grain selection:bg-[#C084FC] selection:text-black">
+      {/* Unframed Full-Bleed Contact Hero */}
+      <section
+        className="film-grain relative w-full min-h-[460px] sm:min-h-[520px] md:min-h-[580px] bg-black flex flex-col justify-between pt-16 sm:pt-20 px-5 sm:px-7 md:px-10 select-none pb-8"
+      >
+        {/* Top Shared Navbar with Contact Active Highlight */}
+        <Navbar
+          activeView="contact"
+          onNavigateHome={onNavigateHome}
+          onNavigateProjects={onNavigateProjects}
+          onNavigateBlog={onNavigateBlog}
+          onOpenCV={onOpenCV}
+          onNavigateContact={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        />
+
+        {/* Centered Massive Display Title: "Contact" */}
+        <div className="relative z-10 text-center my-auto py-12 md:py-16 select-none" style={{ lineHeight: 0.82 }}>
+          <h1
+            className="text-white font-extrabold tracking-tight leading-none"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(3.4rem, 15vw, 17rem)",
+              letterSpacing: "-0.04em",
+            }}
+          >
+            Contact
+          </h1>
+        </div>
+
+        <div className="relative z-10 pb-1" />
+      </section>
+
+      {/* 100% Clone Contact Section: Left Portrait Image Card + Right Contact Details Card */}
+      <section className="w-full px-2 sm:px-2.5 pb-2 sm:pb-2.5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5">
+          {/* Left Column: Pure Portrait Image Card (No badges, No text overlays) */}
+          <div className="relative overflow-hidden rounded-[14px] sm:rounded-[16px] w-full h-[520px] sm:h-[620px] md:h-[680px] lg:h-[720px] bg-[#141416] select-none">
+            <img
+              src="/bensam-contact-portrait.jpg"
+              alt="Ben Sam Oladoyin"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+
+          {/* Right Column: Sits directly on original black background (no separate card background) */}
+          <div className="w-full flex flex-col justify-center px-6 sm:px-10 md:px-14 lg:px-20 py-8 select-none">
+            {/* Title */}
+            <h2 className="text-white font-bold text-xl sm:text-2xl md:text-[28px] tracking-tight mb-8">
+              Contact
+            </h2>
+
+            {/* Prompt */}
+            <p className="text-white/95 text-[15px] sm:text-base md:text-[17px] leading-[1.6] mb-8 max-w-md">
+              Got a question, an ambitious AI project, or want to discuss engineering collaboration?
+            </p>
+
+            {/* Email CTA */}
+            <p className="text-white/95 text-[15px] sm:text-base md:text-[17px] leading-[1.6] max-w-md">
+              Send briefs, project inquiries, or questions to{" "}
+              <a
+                href="mailto:bensamoladoyin1@gmail.com"
+                className="text-white underline underline-offset-4 hover:text-white/80 transition-colors"
+              >
+                bensamoladoyin1@gmail.com
+              </a>
+              .
+            </p>
+
+            {/* WhatsApp CTA */}
+            <p className="text-white/95 text-[15px] sm:text-base md:text-[17px] leading-[1.6] mt-4 max-w-md">
+              Or reach out directly on WhatsApp at{" "}
+              <a
+                href="https://wa.me/2347045422815"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white underline underline-offset-4 hover:text-white/80 transition-colors"
+              >
+                +234 704 542 2815
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Ticket Banner */}
+      <ContactCTA onOpenContact={onOpenContact} />
+
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
+}
+
+function BrandLogo({
+  className = "",
+  size = "default",
+  showText = true,
+}: {
+  className?: string;
+  size?: "sm" | "default" | "lg";
+  showText?: boolean;
+}) {
+  const iconSizes = {
+    sm: "w-5 h-5",
+    default: "w-7 h-7 sm:w-8 sm:h-8",
+    lg: "w-9 h-9 sm:w-10 sm:h-10",
+  };
+  const textSizes = {
+    sm: "text-sm tracking-tight",
+    default: "text-lg sm:text-xl tracking-tight",
+    lg: "text-2xl sm:text-3xl tracking-tight",
+  };
+
+  return (
+    <div className={`inline-flex items-center gap-2.5 sm:gap-3 select-none ${className}`}>
+      {/* Custom Geometric B Monogram Mark (Architectural lockup with 45° angled stem slash) */}
+      <svg
+        viewBox="0 0 62 50"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className={`${iconSizes[size]} text-white shrink-0`}
+        aria-hidden="true"
+      >
+        <g fill="currentColor">
+          {/* Stem with top-left block & 45-deg angled base slash */}
+          <path d="M6 0 H26 V10 H18 V34 L8 44 H0 L8 36 V0 Z" />
+          {/* Upper Bowl */}
+          <path d="M24 0 H44 C53.5 0, 58 4.5, 58 12.5 C58 20.5, 53.5 25, 44 25 H24 V0 Z M34 8.5 V16.5 H42.5 C46 16.5, 48 15, 48 12.5 C48 10, 46 8.5, 42.5 8.5 H34 Z" />
+          {/* Lower Bowl with angled transition */}
+          <path d="M24 22 H46 C55.5 22, 61 27, 61 35 C61 43.5, 54.5 48.5, 44 48.5 H16 L24 40.5 H42 C47 40.5, 50 38, 50 35 C50 32, 47 30, 42 30 H24 V22 Z" />
+        </g>
+      </svg>
+
+      {/* Wordmark in Clash Display / Display typography */}
+      {showText && (
+        <span
+          className={`text-white font-extrabold leading-none ${textSizes[size]}`}
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          BenSam
+        </span>
+      )}
+    </div>
+  );
+}
+
 function Navbar({
   activeView = "home",
   onNavigateHome,
   onNavigateProjects,
+  onNavigateBlog,
   onOpenCV,
+  onNavigateContact,
   embedded = false,
   rightAction,
 }: {
-  activeView?: "home" | "projects" | "cv";
+  activeView?: "home" | "projects" | "blog" | "cv" | "contact";
   onNavigateHome?: () => void;
   onNavigateProjects?: () => void;
+  onNavigateBlog?: () => void;
   onOpenCV?: () => void;
+  onNavigateContact?: () => void;
   embedded?: boolean;
   rightAction?: React.ReactNode;
 }) {
@@ -2006,47 +2235,60 @@ function Navbar({
       className={
         embedded
           ? "relative w-full flex items-center justify-between pointer-events-auto"
-          : `fixed left-0 right-0 z-50 px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-center sm:justify-between pointer-events-none transition-all duration-300 ${
-              scrolled ? "top-2 sm:top-3.5" : "top-2.5 sm:top-4"
+          : `fixed left-0 right-0 z-50 px-1.5 min-[360px]:px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-center sm:justify-between pointer-events-none transition-all duration-300 ${
+              scrolled ? "top-1.5 min-[360px]:top-2 sm:top-3.5" : "top-2 min-[360px]:top-2.5 sm:top-4"
             }`
       }
     >
-      {/* Brand Badge (hidden on mobile, visible on desktop/tablet) */}
-      <button
-        onClick={onNavigateHome}
-        className="hidden sm:flex w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-white items-center justify-center shrink-0 shadow-2xl hover:scale-105 active:scale-95 transition-transform pointer-events-auto cursor-pointer"
-        title="Ben Sam Portfolio"
-      >
-        <span
-          className="text-black text-xs sm:text-sm md:text-base font-black tracking-tight"
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          B·S
-        </span>
-      </button>
+      {/* Left empty spacer keeping navigation pills centered */}
+      <div className="hidden sm:block sm:w-28 md:w-36 shrink-0 pointer-events-none" />
 
-      {/* Mobile row: exactly matching the original signature design (Square Home, Pill Project, Rounded-lg CV) with clean alignment */}
-      <div className="flex sm:hidden items-center justify-center gap-1.5 pointer-events-auto">
+      {/* Mobile row: signature geometric design (Square Home, Pill Project, Rounded-2xl Blog, Rounded-lg CV, Angled Contact) */}
+      <div className="flex sm:hidden items-center justify-center gap-1 min-[360px]:gap-1.5 pointer-events-auto max-w-full overflow-x-auto no-scrollbar py-1 px-1">
         <button
           onClick={onNavigateHome}
-          className="h-10 px-3.5 bg-[#FF4800] text-black font-bold text-xs rounded-none shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
+          className={`h-9 min-[360px]:h-10 px-2 min-[360px]:px-2.5 bg-[#FF4800] text-black font-bold text-[11px] min-[360px]:text-xs rounded-none shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none shrink-0 ${
+            activeView === "home" ? "ring-2 ring-white/50" : ""
+          }`}
           style={{ fontFamily: "var(--font-body)" }}
         >
           Home
         </button>
         <button
           onClick={onNavigateProjects}
-          className="h-10 px-3.5 bg-[#22C55E] text-black font-bold text-xs rounded-full shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
+          className={`h-9 min-[360px]:h-10 px-2 min-[360px]:px-2.5 bg-[#22C55E] text-black font-bold text-[11px] min-[360px]:text-xs rounded-full shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none shrink-0 ${
+            activeView === "projects" ? "ring-2 ring-white/50" : ""
+          }`}
           style={{ fontFamily: "var(--font-body)" }}
         >
           Project
         </button>
         <button
+          onClick={onNavigateBlog}
+          className={`h-9 min-[360px]:h-10 px-2 min-[360px]:px-2.5 bg-[#FACC15] text-black font-bold text-[11px] min-[360px]:text-xs rounded-2xl shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none shrink-0 ${
+            activeView === "blog" ? "ring-2 ring-white/50" : ""
+          }`}
+          style={{ fontFamily: "var(--font-body)" }}
+        >
+          Blog
+        </button>
+        <button
           onClick={onOpenCV}
-          className="h-10 px-3.5 bg-[#8BB4F7] text-black font-bold text-xs rounded-lg shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
+          className={`h-9 min-[360px]:h-10 px-2 min-[360px]:px-2.5 bg-[#8BB4F7] text-black font-bold text-[11px] min-[360px]:text-xs rounded-lg shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none shrink-0 ${
+            activeView === "cv" ? "ring-2 ring-white/50" : ""
+          }`}
           style={{ fontFamily: "var(--font-body)" }}
         >
           CV
+        </button>
+        <button
+          onClick={onNavigateContact}
+          className={`h-9 min-[360px]:h-10 px-2 min-[360px]:px-2.5 bg-[#C084FC] text-black font-bold text-[11px] min-[360px]:text-xs rounded-tr-xl rounded-bl-xl shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none shrink-0 ${
+            activeView === "contact" ? "ring-2 ring-white/50" : ""
+          }`}
+          style={{ fontFamily: "var(--font-body)" }}
+        >
+          Contact
         </button>
       </div>
 
@@ -2054,32 +2296,56 @@ function Navbar({
       <div className="hidden sm:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-2 md:gap-2.5 pointer-events-auto">
         <button
           onClick={onNavigateHome}
-          className="h-11 md:h-12 px-6 md:px-8 bg-[#FF4800] text-black font-bold text-sm md:text-base rounded-none shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
+          className={`h-11 md:h-12 px-4 md:px-6 bg-[#FF4800] text-black font-bold text-sm md:text-base rounded-none shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none ${
+            activeView === "home" ? "ring-2 ring-white/60" : ""
+          }`}
           style={{ fontFamily: "var(--font-body)" }}
         >
           Home
         </button>
         <button
           onClick={onNavigateProjects}
-          className="h-11 md:h-12 px-6 md:px-8 bg-[#22C55E] text-black font-bold text-sm md:text-base rounded-full shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
+          className={`h-11 md:h-12 px-4 md:px-6 bg-[#22C55E] text-black font-bold text-sm md:text-base rounded-full shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none ${
+            activeView === "projects" ? "ring-2 ring-white/60" : ""
+          }`}
           style={{ fontFamily: "var(--font-body)" }}
         >
           Project
         </button>
         <button
+          onClick={onNavigateBlog}
+          className={`h-11 md:h-12 px-4 md:px-6 bg-[#FACC15] text-black font-bold text-sm md:text-base rounded-2xl shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none ${
+            activeView === "blog" ? "ring-2 ring-white/60" : ""
+          }`}
+          style={{ fontFamily: "var(--font-body)" }}
+        >
+          Blog
+        </button>
+        <button
           onClick={onOpenCV}
-          className="h-11 md:h-12 px-6 md:px-8 bg-[#8BB4F7] text-black font-bold text-sm md:text-base rounded-lg shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none"
+          className={`h-11 md:h-12 px-4 md:px-6 bg-[#8BB4F7] text-black font-bold text-sm md:text-base rounded-lg shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none ${
+            activeView === "cv" ? "ring-2 ring-white/60" : ""
+          }`}
           style={{ fontFamily: "var(--font-body)" }}
         >
           CV
         </button>
+        <button
+          onClick={onNavigateContact}
+          className={`h-11 md:h-12 px-4 md:px-6 bg-[#C084FC] text-black font-bold text-sm md:text-base rounded-tr-2xl rounded-bl-2xl shadow-md flex items-center justify-center hover:brightness-110 active:scale-95 outline-none focus:outline-none transition-all cursor-pointer select-none ${
+            activeView === "contact" ? "ring-2 ring-white/60" : ""
+          }`}
+          style={{ fontFamily: "var(--font-body)" }}
+        >
+          Contact
+        </button>
       </div>
 
-      {/* Right side action or spacer */}
+      {/* Right side action or spacer balanced to brand lockup */}
       {rightAction ? (
         <div className="hidden sm:flex items-center shrink-0 pointer-events-auto">{rightAction}</div>
       ) : (
-        <div className="hidden sm:block sm:w-11 sm:h-11 md:w-12 md:h-12 shrink-0 pointer-events-none" />
+        <div className="hidden sm:block sm:w-28 md:w-36 shrink-0 pointer-events-none" />
       )}
     </nav>
   );
@@ -2132,7 +2398,6 @@ function Hero({
         {/* Cinematic Vignette & Gradient Overlays for Readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/60 pointer-events-none" />
         <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/10 to-black/60 pointer-events-none" />
-
       </section>
     </div>
   );
@@ -2142,49 +2407,52 @@ function Hero({
 function CVPage({
   onNavigateHome,
   onNavigateProjects,
+  onNavigateBlog,
   onOpenContact,
+  onNavigateContact,
 }: {
   onNavigateHome: () => void;
   onNavigateProjects: () => void;
+  onNavigateBlog?: () => void;
   onOpenContact?: () => void;
+  onNavigateContact?: () => void;
 }) {
   const handlePrint = () => {
     window.print();
   };
 
   return (
-    <div className="min-h-screen bg-black text-white film-grain">
-      {/* Top Header Navbar Frame */}
-      <div className="no-print w-full px-2 sm:px-2.5 pt-2 pb-2.5">
-        <div className="film-grain relative w-full rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10 px-4 sm:px-8 py-3.5 sm:py-4 flex items-center">
-          <Navbar
-            activeView="cv"
-            embedded
-            onNavigateHome={onNavigateHome}
-            onNavigateProjects={onNavigateProjects}
-            onOpenCV={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            rightAction={
-              <button
-                onClick={handlePrint}
-                className="inline-flex items-center gap-2 bg-white text-black font-bold text-xs md:text-sm px-4 md:px-5 h-11 md:h-12 rounded-full shadow-md hover:bg-white/90 active:scale-95 transition-all cursor-pointer"
-              >
-                <DownloadSimple size={18} weight="bold" />
-                <span>Download PDF</span>
-              </button>
-            }
-          />
-        </div>
+    <div className="min-h-screen bg-black text-white film-grain pt-16 sm:pt-20">
+      {/* Global Floating Navbar - 100% consistent with Home, Projects, Blog & Contact */}
+      <div className="no-print">
+        <Navbar
+          activeView="cv"
+          onNavigateHome={onNavigateHome}
+          onNavigateProjects={onNavigateProjects}
+          onNavigateBlog={onNavigateBlog}
+          onOpenCV={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onNavigateContact={onNavigateContact}
+          rightAction={
+            <button
+              onClick={handlePrint}
+              className="inline-flex items-center gap-2 bg-white text-black font-bold text-xs md:text-sm px-4 md:px-5 h-11 md:h-12 rounded-full shadow-md hover:bg-white/90 active:scale-95 transition-all cursor-pointer"
+            >
+              <DownloadSimple size={18} weight="bold" />
+              <span>Download PDF</span>
+            </button>
+          }
+        />
       </div>
 
       {/* Main CV Content Frame */}
       <div className="w-full px-2 sm:px-2.5 pb-2.5">
-        <div className="cv-printable film-grain w-full rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-[#09090b] border border-white/10 p-6 sm:p-10 md:p-14 relative">
+        <div className="cv-printable film-grain w-full rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-[#09090b] border border-white/10 p-4 min-[380px]:p-6 sm:p-10 md:p-14 relative">
           
           {/* Top Back Navigation Bar */}
-          <div className="no-print flex items-center justify-between pb-8 mb-8 border-b border-white/10">
+          <div className="no-print flex items-center justify-between pb-6 sm:pb-8 mb-6 sm:mb-8 border-b border-white/10">
             <button
               onClick={onNavigateHome}
-              className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm font-semibold transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 text-white/60 hover:text-white text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
             >
               <ArrowLeft size={16} weight="bold" />
               <span>Back to Portfolio</span>
@@ -2192,7 +2460,7 @@ function CVPage({
 
             <button
               onClick={handlePrint}
-              className="sm:hidden inline-flex items-center gap-1.5 bg-white text-black font-bold text-xs px-3.5 py-2 rounded-full cursor-pointer"
+              className="sm:hidden inline-flex items-center gap-1.5 bg-white text-black font-bold text-xs px-3.5 py-2 rounded-full cursor-pointer shadow-md active:scale-95 transition-transform"
             >
               <DownloadSimple size={14} weight="bold" />
               <span>PDF</span>
@@ -2200,7 +2468,7 @@ function CVPage({
           </div>
 
           {/* Profile Hero Header Card */}
-          <div className="relative overflow-hidden bg-[#0f172a]/60 border border-white/10 rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-10 mb-12 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+          <div className="relative overflow-hidden bg-[#0f172a]/60 border border-white/10 rounded-xl md:rounded-2xl p-4 min-[380px]:p-6 sm:p-8 md:p-10 mb-8 sm:mb-12 flex flex-col md:flex-row items-center md:items-start gap-5 sm:gap-6 md:gap-8">
             {/* Professional Blueprint / Architectural Square Box Grid */}
             <div
               className="absolute inset-0 pointer-events-none opacity-20"
@@ -2220,7 +2488,7 @@ function CVPage({
               }}
             />
 
-            <div className="relative z-10 w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl shrink-0 bg-black/60">
+            <div className="relative z-10 w-24 h-24 min-[380px]:w-28 min-[380px]:h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl shrink-0 bg-black/60">
               <img
                 src="/bensam-portrait.jpg"
                 alt="Ben Sam Oladoyin"
@@ -2230,13 +2498,13 @@ function CVPage({
 
             <div className="relative z-10 flex-1 text-center md:text-left">
               <h1
-                className="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight mb-2"
+                className="text-white font-extrabold text-2xl min-[380px]:text-3xl sm:text-4xl md:text-5xl tracking-tight mb-2"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Ben Sam Oladoyin
               </h1>
               <p
-                className="text-white/80 text-base sm:text-lg md:text-xl font-medium mb-6"
+                className="text-white/80 text-sm min-[380px]:text-base sm:text-lg md:text-xl font-medium mb-4 sm:mb-6"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 Founder of Trax &amp; BTEHub Solutions <span className="text-white/40">|</span> AI/ML Engineer
@@ -2622,10 +2890,15 @@ function CVPage({
 export default function App() {
   const [cvModalOpen, setCvModalOpen] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
-  const [view, setView] = useState<"home" | "projects" | "cv">("home");
+  const [view, setView] = useState<"home" | "projects" | "blog" | "cv" | "contact">("home");
 
   const navigateToProjects = () => {
     setView("projects");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const navigateToBlog = () => {
+    setView("blog");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -2639,6 +2912,11 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const navigateToContact = () => {
+    setView("contact");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const openContact = () => {
     setContactModalOpen(true);
   };
@@ -2648,7 +2926,19 @@ export default function App() {
       {view === "projects" && (
         <ProjectsArchivePage
           onNavigateHome={navigateToHome}
+          onNavigateBlog={navigateToBlog}
           onOpenCV={navigateToCV}
+          onNavigateContact={navigateToContact}
+        />
+      )}
+
+      {view === "blog" && (
+        <BlogPage
+          onNavigateHome={navigateToHome}
+          onNavigateProjects={navigateToProjects}
+          onOpenCV={navigateToCV}
+          onOpenContact={openContact}
+          onNavigateContact={navigateToContact}
         />
       )}
 
@@ -2656,6 +2946,18 @@ export default function App() {
         <CVPage
           onNavigateHome={navigateToHome}
           onNavigateProjects={navigateToProjects}
+          onNavigateBlog={navigateToBlog}
+          onOpenContact={openContact}
+          onNavigateContact={navigateToContact}
+        />
+      )}
+
+      {view === "contact" && (
+        <ContactPage
+          onNavigateHome={navigateToHome}
+          onNavigateProjects={navigateToProjects}
+          onNavigateBlog={navigateToBlog}
+          onOpenCV={navigateToCV}
           onOpenContact={openContact}
         />
       )}
@@ -2667,7 +2969,9 @@ export default function App() {
             activeView="home"
             onNavigateHome={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             onNavigateProjects={navigateToProjects}
+            onNavigateBlog={navigateToBlog}
             onOpenCV={navigateToCV}
+            onNavigateContact={navigateToContact}
           />
 
           {/* Top Ticker Marquee - Positioned cleanly below the floating navbar */}

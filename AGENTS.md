@@ -1,6 +1,6 @@
 # Portfolio Bensam (BTEHub Solutions)
 
-> **MANDATORY AGENT INSTRUCTION**: Before planning, architecting, building, or modifying code in this project, the agent MUST always review this document (`AGENTS.md`) and apply the skills in `.agents/skills/ui-ux-pro-max/` (typography pairings, design aesthetics, responsive patterns, and color palettes).
+> **MANDATORY AGENT INSTRUCTION**: Build and design exclusively by cloning the screenshots provided by the user 100% with the user's content and branding. Do NOT use or reference any pre-built design systems.
 
 Next.js 16 (App Router) + React 19 + Tailwind CSS v4 portfolio web application.
 
@@ -20,7 +20,6 @@ Development server runs on port `8443`:
 - `src/App.tsx` - Primary portfolio application component containing all core sections (Hero, About, Projects, Experience, Skills, Certifications, Interactive CV, Contact)
 - `src/AudioNarrationPlayer.tsx` - Audio narration playback component
 - `src/lib/` - Shared helper utilities (`cn`, etc.)
-- `.agents/skills/ui-ux-pro-max/` & `.agent/skills/ui-ux-pro-max/` - UI/UX Pro Max design intelligence skills and presets
 
 ## Tech Stack & Dependencies
 
@@ -29,26 +28,18 @@ Development server runs on port `8443`:
 - **Styling**: Tailwind CSS v4 with `@tailwindcss/postcss`
 - **Animations & Smooth Scroll**: `motion` (Framer Motion v12) & `lenis`
 - **Icons**: `@phosphor-icons/react`
-- **Design Intelligence**: UI/UX Pro Max (`ui-ux-pro-max`)
-
-## Styling & Design System
-
-- **Tailwind CSS v4**: Imported in `src/app/globals.css` via `@import 'tailwindcss';` with custom `@theme` variables (`--font-display`, `--font-body`, `--font-mono`, `--font-serif`).
-- **Typography**: Clash Display, Satoshi, Space Mono, Syne, Plus Jakarta Sans.
-- **Aesthetic**: Premium dark mode, architectural blueprint grid patterns, tactile paper/film grain noise overlays, smooth marquee tickers, and responsive layouts.
-- **Print / PDF CV Export**: Customized `@media print` styling in `src/app/globals.css` for clean CV exporting.
 
 ## Code Quality & Guidelines
 
 - Use double quotes for strings containing apostrophes (`"We're building..."`), or escape them in single-quoted strings.
 - Ensure all JSX tags are properly closed and TypeScript types are maintained.
-- When creating UI components, utilize Tailwind utility classes, Phosphor Icons, and the design rules from the `ui-ux-pro-max` skill.
+- Follow the provided screenshot references directly and strictly with 100% fidelity.
 
 ## Strict Agent Execution Rules
 
-- **Direct & Immediate Execution**: Once a task is given and understood, implement and get it done ASAP.
-- **Zero Time Waste / No Irrelevant Actions**: Do NOT browse unprompted, do NOT perform unrequested side investigations, and do NOT waste time or credits on irrelevant tasks.
-- **Strict Focus**: Execute precisely what is requested, verify the changes swiftly, and keep all output concise and direct.
+- **Minimum Time Execution**: Always use the absolute minimum amount of time to get any task done. Go straight to the target, get it done immediately, and stop.
+- **Zero Tangents & Zero Irrelevant Actions**: Do NOT generate unrequested assets or images, do NOT browse unprompted, do NOT perform unrequested investigations, and do NOT overcomplicate.
+- **Surgical & Direct**: Make exact, direct edits in a single pass, verify swiftly, and keep all user communication ultra-concise and direct.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
